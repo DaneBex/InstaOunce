@@ -32,7 +32,7 @@ const LoginForm = () => {
     if (email && password) {
       loginButton = <button className='login-button' type='submit'>Login</button>
     } else {
-      loginButton = <button className='login-button-nothing' type='submit'>Login</button>
+      loginButton = <p className='login-button-nothing'>Login</p>
     }
 
   if (user) {
@@ -55,6 +55,7 @@ const LoginForm = () => {
         ))}
       </div>
       <div className='input'>
+        <label>Email</label>
         <input
           name='email'
           type='text'
@@ -64,6 +65,7 @@ const LoginForm = () => {
         />
       </div>
       <div className='input'>
+        <label>Password</label>
         <input
           name='password'
           type='password'

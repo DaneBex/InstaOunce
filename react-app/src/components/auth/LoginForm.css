@@ -8,9 +8,13 @@
 }
 
 .form {
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 5px;
+    width: 348px;
+    height: 265px;
 }
 
 .login-button {
@@ -22,6 +26,7 @@
     width: 268px;
     height: 30px;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .login-button-nothing {
@@ -34,40 +39,64 @@
     width: 268px;
     height: 30px;
     font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .input {
     display: flex;
+    position: relative;
     flex-direction: column;
     border-radius: 3px;
     width: 268px;
-    height: 38px;
+    height: 45px;
     display: flex;
     align-items: center;
+    border-radius: 3px;
+    border: 1px solid rgba(var(--b6a,219,219,219),1)
 }
 
 .main-login-form {
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 380px;
     width: 350px;
+    padding: 10px 0
 }
 
 .logo-form {
     font-family: lobster;
     color: black;
+    width: 175px;
+    height: 36.5px;
     text-decoration: none;
+    text-align: center;
     font-size: 29px;
-    margin: 22px auto 12px
+    margin: 22px 86.5px 12px;
+}
+
+label {
+    position: absolute;
+    font-size: 12px;
+    margin-top: 3px;
+    left: 5px;
 }
 
 input {
     width: 213px;
     height: 36px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    position: absolute;
+    bottom: 0;
+}
 
+input::placeholder {
+    color: grey
 }
 
 .login-signup-main {
@@ -75,6 +104,7 @@ input {
     height: 100vh;
     width: 100vw;
     margin: 0;
+    gap: 110px;
 }
 
 .is-image-login {
