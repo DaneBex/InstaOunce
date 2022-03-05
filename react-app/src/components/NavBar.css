@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+#create-post-button {
+    background-color: white;
+    border: none;
+}
+
+.profile-pic {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
+
+#create-post-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.houseIcon {
+    color: black;
+    width: 22px;
+    height: 22px;
+}
+
+.instaOunce-name {
+    font-family: lobster;
+    color: black;
+    text-decoration: none;
+    font-size: 29px;
+    margin-left: 80%;
+}
+
+#nav-bar {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    height: 60px;
+    border-bottom: 1px solid black;
+    align-items: center;
+}
+
+#nav-not-logo {
+    display: flex;
+    gap: 40px;
+    margin-right: 20%;
+}
+
+.showmenu-navbar {
+    position: absolute;
+    background-color: white;
+    box-shadow: 1px 1px 10px rgba(211, 211, 211, 0.6);
+    border-radius: 12px;
+}
+
+.userIcon {
+    width: 16px;
+    height: 16px;
+}
+
+.navbar-show-profile {
+    display: flex;
+    color: black;
+    gap: 20px;
+    border-radius: 12px;
+    padding-left: 10px;
+    height: 37px;
+    width: 230px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.navbar-showmenu-logout {
+    height: 37px;
+    display: flex;
+    padding-left: 10px;
+    cursor: pointer;
+    align-items: center;
+    width: 230px;
+    border-top: 1px solid rgba(211, 211, 211, 0.6);
+}
+
+.navbar-show-profile:hover {
+    background-color: rgba(211, 211, 211, 0.6);
+
+    font-size: 14px;
+}
+
+.navbar-showmenu-logout:hover {
+    background-color: rgba(211, 211, 211, 0.6);
+}
