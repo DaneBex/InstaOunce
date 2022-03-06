@@ -22,9 +22,29 @@ def seed_posts():
         userId=4, imageUrl='https://images.unsplash.com/photo-1644939160448-3e23e8e97b8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDM2fHhqUFI0aGxrQkdBfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60', caption='Lunchtime!')
     p10 = Post(
         userId=5, imageUrl='https://images.unsplash.com/photo-1645382883577-e7a09cc1f014?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHJuU0tESHd3WVVrfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60', caption='House')
+    p11 = Post(
+        userId=5, imageUrl='https://images.unsplash.com/photo-1646361700146-855e94bb6ce5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60', caption='Pick a taxi, any taxi.')
+    p12 = Post(
+        userId=5, imageUrl='https://images.unsplash.com/photo-1504595403659-9088ce801e29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGV0c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60', caption='Give us our treats human!')
+    p13 = Post(
+        userId=6, imageUrl='https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y29kaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60', caption='I can\'t figure out this bug.')
+    p14 = Post(
+        userId=6, imageUrl='https://images.unsplash.com/photo-1646442412837-bd9683f90f93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60', caption='Ocean waves')
+    p15 = Post(
+        userId=7, imageUrl='https://images.unsplash.com/flagged/photo-1575597255483-55f2afb6f42c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8bmV3JTIweW9yayUyMGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60', caption='Brooklyn Bridge')
+    p16 = Post(
+        userId=7, imageUrl='https://images.unsplash.com/photo-1631899214712-f7afebed4a82?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8eEh4WVRNSExnT2N8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60', caption='Get to the Vespa!')
+    p17 = Post(
+        userId=7, imageUrl='https://images.unsplash.com/photo-1644867753999-ed8762236948?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDkyfHhIeFlUTUhMZ09jfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60', caption='Very red bike')
+    p18 = Post(
+        userId=4, imageUrl='https://images.unsplash.com/photo-1645894096014-51dddfdd027a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE4fENEd3V3WEpBYkV3fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60', caption='Creepy eyeball')
+    p19 = Post(
+        userId=4, imageUrl='https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2Fyc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60', caption='My other car is a piece crap.')
+    p20 = Post(
+        userId=5, imageUrl='https://images.unsplash.com/photo-1644447295446-19b7e712a895?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDYzfHhqUFI0aGxrQkdBfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60', caption='Burger time')
 
 
-    db.session.add_all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10])
+    db.session.add_all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20])
     db.session.commit()
 
 
