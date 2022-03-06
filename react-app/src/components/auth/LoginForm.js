@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import * as sessionActions from "../../store/session"
 
 import './LoginForm.css'
 
@@ -39,6 +40,10 @@ const LoginForm = () => {
     return <Redirect to='/' />;
   }
 
+  const demoUser = e => {
+    return dispatch(sessionActions.login('demo@aa.io', 'password'))
+}
+
   return (
     <div className='login-signup-main'>
     <div className='login-signup-article'>
@@ -75,8 +80,10 @@ const LoginForm = () => {
         />
         </div>
           {loginButton}
+      <p onClick={demoUser} className='demo-user'>Demo User</p>
       </div>
     </form>
+
     </div>
     </div>
     </div>

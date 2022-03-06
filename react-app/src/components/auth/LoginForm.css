@@ -7,6 +7,11 @@
     justify-content: center;
 }
 
+.demo-user {
+    font-size: 14px;
+    cursor: pointer;
+}
+
 .form {
     margin-top: 24px;
     display: flex;
