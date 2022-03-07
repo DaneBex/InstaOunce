@@ -6,6 +6,10 @@
     font-family: sans-serif;
 }
 
+html {
+    height: 100vh;
+}
+
 #create-post-button {
     background-color: white;
     border: none;
@@ -47,6 +51,7 @@
     height: 60px;
     border-bottom: 1px solid black;
     align-items: center;
+    position: relative;
 }
 
 #nav-not-logo {
