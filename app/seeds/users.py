@@ -9,10 +9,18 @@ def seed_users():
         username='marnie', email='marnie@aa.io', password='password', profile_pic="https://i.guim.co.uk/img/media/3b076eacf3af3ba9594a6786f72bd4b236df0eec/651_940_3450_2070/master/3450.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=f32d63ad41960ada2cf0e3993298caf6")
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password', profile_pic="https://cdn.britannica.com/55/2155-050-604F5A4A/lion.jpg")
+    dane = User(
+        username='dane', email='daneb@email.com', password='password1', profile_pic="https://cdn.britannica.com/55/2155-050-604F5A4A/lion.jpg")
+    cesar = User(
+        username='cesar', email='cesars@email.com', password='password2', profile_pic="https://cdn.britannica.com/55/2155-050-604F5A4A/lion.jpg")
+    brandon = User(
+        username='brandon', email='brandonv@email.com', password='password3', profile_pic="https://cdn.britannica.com/55/2155-050-604F5A4A/lion.jpg")
+    hamlet = User(
+        username='hamlet', email='hamletv@email.com', password='password4', profile_pic="https://cdn.britannica.com/55/2155-050-604F5A4A/lion.jpg")
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add_all([demo, marnie, bobbie, dane, cesar, brandon, hamlet])
+    # db.session.add(marnie)
+    # db.session.add(bobbie)
 
     db.session.commit()
 
