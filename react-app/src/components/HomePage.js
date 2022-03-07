@@ -8,18 +8,18 @@ import { faHeart, faComment, faPaperPlane } from '@fortawesome/free-regular-svg-
 import './HomePage.css'
 
 const HomePage = () => {
-    const dispatch = useDispatch()
-    const sessionUser = useSelector(state => state.session.user)
-    const postsObj = useSelector(state => state.post)
-    const posts = Object.values(postsObj)
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+  const postsObj = useSelector((state) => state.post);
+  const posts = Object.values(postsObj);
 
-    console.log(posts)
 
-    useEffect(() => {
-        dispatch(populatePosts())
-    }, [])
+  useEffect(() => {
+    dispatch(populatePosts());
+  }, []);
 
-    if (!sessionUser) return <Redirect to='/login' />
+
+  if (!sessionUser) return <Redirect to="/login" />;
 
     return (
         <div className='main-homepage'>
@@ -54,4 +54,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage
+export default HomePage;
