@@ -19,5 +19,6 @@ class Post(db.Model):
             "imageUrl": self.imageUrl,
             "caption": self.caption,
             "user_prof_pic": self.user.profile_pic,
-            "user_prof_username": self.user.username
+            "user_prof_username": self.user.username,
+            "likes": self.likes
         }

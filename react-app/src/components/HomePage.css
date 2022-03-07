@@ -41,3 +41,44 @@
     align-items: center;
     gap: 10px;
 }
+
+.post-icons {
+    width: 602px;
+    margin: 4px 0 0;
+    height: 54px;
+    padding: 6px 16px 8px;
+    display: flex;
+}
+
+.heart-div {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+}
+
+.heart-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.comment-div {
+    height: 40px;
+    width: 40px;
+    padding: 8px;
+}
+
+.comment-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.send-div {
+    height: 40px;
+    width: 40px;
+    padding: 8px;
+}
+
+.send-icon {
+    width: 24px;
+    height: 24px;
+}
