@@ -17,7 +17,6 @@ const HomePage = () => {
 
     const [comment, setComment] = useState('')
 
-    console.log(posts)
 
     useEffect(() => {
         //  dispatch(populateLikes())
@@ -40,7 +39,8 @@ const HomePage = () => {
         }
     }
 
-    if (!sessionUser) return <Redirect to='/login' />
+
+  if (!sessionUser) return <Redirect to="/login" />;
 
     return (
         <div className='main-homepage'>
@@ -99,4 +99,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage
+export default HomePage;

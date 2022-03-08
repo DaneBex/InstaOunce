@@ -1,0 +1,18 @@
+.post-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.content-input {
+  position: absolute;
+  top: 250px;
+  left: 100px;
+}
+
+.image-input {
+  position: absolute;
+  top: 150px;
+  left: 100px;
+}
