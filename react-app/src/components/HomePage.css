@@ -67,6 +67,9 @@
     width: 24px;
     height: 24px;
 }
+.fatHeart{
+    color: red;
+}
 
 .comment-div {
     height: 40px;
