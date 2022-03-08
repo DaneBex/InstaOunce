@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { login } from "../../store/session";
-import * as sessionActions from "../../store/session";
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect, NavLink } from 'react-router-dom';
+import { login } from '../../store/session';
+import * as sessionActions from "../../store/session"
 
 import "./LoginForm.css";
 
@@ -31,69 +31,72 @@ const LoginForm = () => {
   };
 
   if (email && password) {
-    loginButton = (
-      <button className="login-button" type="submit">
-        Login
-      </button>
-    );
+    loginButton = <button className='login-button' type='submit'>Login</button>
   } else {
-    loginButton = <p className="login-button-nothing">Login</p>;
+    loginButton = <p className='login-button-nothing'>Login</p>
   }
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Redirect to='/' />;
   }
 
-  const demoUser = (e) => {
-    return dispatch(sessionActions.login("demo@aa.io", "password"));
-  };
+  const demoUser = e => {
+    return dispatch(sessionActions.login('demo@aa.io', 'password'))
+  }
 
   return (
-    <div className="login-signup-main">
-      <div className="login-signup-article">
-        <div className="is-image-login">
-          <img
-            className="login-pic"
-            src="https://i5.walmartimages.com/asr/1c1e8882-6647-4f95-b6da-39183898618c.0b325bb079e2cd662542f5c50717c54a.jpeg?odnHeight=580&odnWidth=580&odnBg=FFFFFF"
-          />
+    <div className='login-signup-main'>
+      <div className='login-signup-article'>
+        <div className='is-image-login'>
+          <img className='login-pic' src='https://i5.walmartimages.com/asr/1c1e8882-6647-4f95-b6da-39183898618c.0b325bb079e2cd662542f5c50717c54a.jpeg?odnHeight=580&odnWidth=580&odnBg=FFFFFF' />
         </div>
-        <div className="not-image-login">
-          <form className="main-login-form" onSubmit={onLogin}>
-            <h1 className="logo-form">InstaOunce</h1>
-            <div className="form">
-              <div>
-                {errors.map((error, ind) => (
-                  <div key={ind}>{error}</div>
-                ))}
+        <div className='col'>
+          <div className='not-image-login'>
+            <form className='main-login-form' onSubmit={onLogin}>
+              <h1 className='logo-form'>InstaOunce</h1>
+              <div className='form'>
+                <div>
+                  {errors.map((error, ind) => (
+                    <div key={ind}>{error}</div>
+                  ))}
+                </div>
+                <div className='input'>
+                  <input
+                    name='email'
+                    type='text'
+                    placeholder='Email'
+                    value={email}
+                    onChange={updateEmail}
+                  />
+                </div>
+                <div className='input'>
+                  <input
+                    name='password'
+                    type='password'
+                    placeholder='Password'
+                    value={password}
+                    onChange={updatePassword}
+                  />
+                </div>
+                {loginButton}
+                <p>------------ OR ------------</p>
+                <p onClick={demoUser} className='demo-user'>Demo User</p>
               </div>
-              <div className="input">
-                <label>Email</label>
-                <input
-                  name="email"
-                  type="text"
-                  placeholder="Email"
-                  value={email}
-                  onChange={updateEmail}
-                  className="login-input"
-                />
-              </div>
-              <div className="input">
-                <label>Password</label>
-                <input
-                  className="login-input"
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={updatePassword}
-                />
-              </div>
-              {loginButton}
-              <p onClick={demoUser} className="demo-user">
-                Demo User
-              </p>
+            </form>
+          </div>
+          <div className='main-signup-form'>
+            <p>Don't have an account? <NavLink to='/sign-up'>Sign Up</NavLink></p>
+          </div>
+
+          <div className='gta'>
+            <p>Get the app.</p>
+          </div>
+          <div className='get-app'>
+            <div>
+              <img src="as.svg" />
+              <img src="ps.svg" />
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

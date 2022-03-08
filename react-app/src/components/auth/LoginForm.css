@@ -63,15 +63,58 @@
 }
 
 .main-login-form {
-  border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 380px;
-  width: 350px;
-  padding: 10px 0;
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 380px;
+    width: 350px;
+    padding: 10px 0;
+    margin: 0px 0px 10px;
 }
 
+.main-signup-form {
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 63px;
+    width: 350px;
+    padding: 10px 0;
+    margin: 0px 0px 10px;
+}
+.main-signup-form p {
+    color:#262626;
+    font-size: 14px;
+}
+.main-signup-form a {
+    color:#0095F6;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.get-app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 350px;
+    margin: 0 15px;
+}
+.get-app img {
+    width: 136px;
+    height: 40px;
+}
+.get-app div {
+    flex-direction: row;
+}
+.gta{
+    margin: 15px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .logo-form {
   font-family: lobster;
   color: black;
@@ -83,25 +126,25 @@
   margin: 22px 86.5px 12px;
 }
 
-label {
-  position: absolute;
-  font-size: 12px;
-  margin-top: 3px;
-  left: 5px;
+.not-image-login label {
+    position: absolute;
+    font-size: 12px;
+    margin-top: 3px;
+    left: 5px;
 }
 
-.login-input {
-  width: 213px;
-  height: 36px;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  position: absolute;
-  bottom: 0;
+.not-image-login input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    position: absolute;
+    bottom: 0;
 }
 
-input::placeholder {
-  color: grey;
+.not-image-login input::placeholder {
+    color: grey
 }
 
 .login-signup-main {
