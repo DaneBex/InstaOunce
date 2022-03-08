@@ -1,12 +1,19 @@
-body {
+/* body {
+} */
+
+.main-body{
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 50px 0;
+    flex-direction: column;
 }
 
-
+.main-signup-form{
+    background-color: white;
+}
 .main-box {
+    background-color: white;
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     display: flex;
     flex-direction: column;
@@ -17,6 +24,7 @@ body {
     padding: 20px 0;
     margin: 0px 0px 10px;
 }
+
 .main-box input {
     width: 100%;
     height: 100%;
