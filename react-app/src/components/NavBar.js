@@ -22,7 +22,7 @@ const NavBar = () => {
     if (profileClicked) return;
     setProfileClicked(true);
   };
-  useEffect(() => {}, [postForm]);
+  useEffect(() => { }, [postForm]);
 
   useEffect(() => {
     if (!profileClicked) return;
@@ -53,7 +53,7 @@ const NavBar = () => {
   }
 
   return (
-    <nav>
+    <nav id="my-nav">
       <ul id="nav-bar">
         <div id="nav-logo-div">
           <li>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import PostForm from "./PostForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusMinus } from "@fortawesome/free-solid-svg-icons";
+import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 
 function PostFormModal() {
   const [showModal, setShowModal] = useState(false);
@@ -10,7 +10,7 @@ function PostFormModal() {
   return (
     <>
       <button onClick={() => setShowModal(true)} id="create-post-button">
-        <FontAwesomeIcon id="create-post-icon" icon={faPlusMinus} />
+        <FontAwesomeIcon id="create-post-icon" icon={faSquarePlus} />
       </button>
 
       {showModal && (

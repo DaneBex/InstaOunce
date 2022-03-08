@@ -63,6 +63,7 @@
 }
 
 .main-login-form {
+  background-color: white;
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     display: flex;
     flex-direction: column;
