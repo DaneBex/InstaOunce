@@ -4,6 +4,7 @@ from app.models import Post, db
 from flask_login import current_user, login_required
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
+from app.forms.upload_form import UploadForm
 
 post_routes = Blueprint('posts', __name__)
 
@@ -36,6 +37,21 @@ def upload_image():
     db.session.add(new_post)
     db.session.commit()
     return {'url': url}
+
+
+@post_routes.route('/', methods=['POST'])
+@login_required
+def add_image():
+    post_form = UploadForm()
+
+    if post_form.validate_on_submit():
+        new_post = Post(imageUrl=post_form.data['imageUrl'], caption=post_form.data['caption'])
+        db.session.add(new_post)
+        db.session.commit()
+        return new_post.to_dict()
+    if post_form.errors:
+        return post_form.errors
+    return f'No image added'
 
 
 @post_routes.route('/<int:id>')

@@ -16,6 +16,7 @@ function PostForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    const s3Url;
     const formData = new FormData();
         formData.append("image", imageUrl);
 
@@ -23,12 +24,12 @@ function PostForm() {
         // some sort of loading message is a good idea
         setImageLoading(true);
 
-        const res = await fetch('/api/images', {
+        const res = await fetch('/api/posts/upload-image', {
             method: "POST",
             body: formData,
         });
         if (res.ok) {
-            await res.json();
+            s3Url = await res.json();
             setImageLoading(false);
             // history.push("/images");
         }
@@ -41,7 +42,7 @@ function PostForm() {
     return dispatch(
       postActions.createPost({
         caption,
-        imageUrl,
+        imageUrl: s3Url,
         user_id: sessionUser.id,
       })
     )
