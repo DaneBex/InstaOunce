@@ -7,12 +7,61 @@
 
 .content-input {
   position: absolute;
-  top: 250px;
-  left: 100px;
+  top: 165px;
+  left: 50px;
 }
 
 .image-input {
   position: absolute;
-  top: 150px;
-  left: 100px;
+  top: 95px;
+  left: 50px;
+}
+
+.image-input label,
+.content-input label {
+  position: absolute;
+  top: -25px;
+  font-size: 15px;
+}
+
+.post-form div h3 {
+  margin-bottom: 5px;
+}
+
+.add-post-caption {
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+}
+
+.add-post-caption:focus {
+  border: none;
+}
+
+.post-form-btn {
+  position: absolute;
+  right: 25px;
+  top: 28px;
+  border: none;
+  color: rgb(21, 157, 247);
+  background-color: white;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.red,
+.green {
+  background-color: white;
+  padding: 5px;
+  width: 200px;
+}
+
+.red {
+  color: red;
+  border: 2px solid red;
+}
+.green {
+  color: green;
+  border: 2px solid green;
 }

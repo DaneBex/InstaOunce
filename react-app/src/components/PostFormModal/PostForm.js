@@ -45,23 +45,33 @@ function PostForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
+      <div className="image-input">
+        <label for="image">
+          <h3>Image</h3>
+        </label>
+        <input
+          className={imageUrl ? "green" : "red"}
+          type="file"
+          accept="image/*"
+          name="image"
+          onChange={updateImage}
+        />
+      </div>
 
-      <label className="content-input">
-        <h3>Content</h3>
+      <div className="content-input">
+        <label for="caption">
+          <h3>Caption</h3>
+        </label>
         <textarea
-          rows={10}
-          columns={25}
+          className="add-post-caption"
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
         ></textarea>
-      </label>
+      </div>
 
-      <label className="image-input">
-        <h3>Image</h3>
-        <input type="file" accept="image/*" onChange={updateImage} />
-      </label>
-
-      <button type="submit">Post</button>
+      <button className="post-form-btn" type="submit">
+        Post
+      </button>
     </form>
   );
 }
