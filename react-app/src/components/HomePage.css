@@ -21,9 +21,12 @@
 }
 
 .post-box {
-    border: 1px solid grey;
+    background-color: white;
+    border: 1px solid lightgray;
     width: 602px;
     height: auto;
+    margin-bottom: 20px;
+    border-radius: 3px;
 }
 
 .prof-pic-post {
@@ -125,7 +128,7 @@
     height: 53px;
     padding: 6px 16px;
     display: flex;
-    border-top: 1px solid grey;
+    border-top: 1px solid lightgray;
     align-items: center;
 }
 
