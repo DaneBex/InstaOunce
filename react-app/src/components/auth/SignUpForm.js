@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import * as sessionActions from "../../store/session"
 
 import './SignUpForm.css'
 
@@ -51,12 +52,16 @@ const SignUpForm = () => {
     return <Redirect to='/' />;
   }
 
+  const demoUser = e => {
+    return dispatch(sessionActions.login('demo@aa.io', 'password'))
+  }
+
   return (
     <div className='main-body'>
       <div className='main-box'>
         <h1 className='logo-form'>InstaOunce</h1>
         <h2>Sign up to see photos and videos <br />from your friends.</h2>
-        <button className='signup-button'>Log in with Demo</button>
+        <button onClick={demoUser} className='signup-button'>Log in with Demo</button>
         <p>------------ OR ------------</p>
         <form
           onSubmit={onSignUp}>

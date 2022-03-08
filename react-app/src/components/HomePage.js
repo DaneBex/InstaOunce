@@ -90,7 +90,7 @@ const HomePage = () => {
                             <FontAwesomeIcon className='smileface-icon' icon={faFaceSmile} />
                         </div>
                         <textarea value={comment} onChange={(e) => setComment(e.target.value)} className='enter-comment-box' placeholder='Add a comment...' />
-                        <button className='post-comment-button' onClick={() => makeComment()}>Post</button>
+                        <button className='post-comment-button' onClick={() => makeComment(post.id)}>Post</button>
                     </div>
                 </div>
             ))}
