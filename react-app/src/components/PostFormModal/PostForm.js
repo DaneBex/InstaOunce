@@ -69,7 +69,7 @@ function PostForm() {
         ))}
       </ul>
       <div className="image-input">
-        <label for="image">
+        <label htmlFor="image">
           <h3>Image</h3>
         </label>
         <input
@@ -82,7 +82,7 @@ function PostForm() {
       </div>
 
       <div className="content-input">
-        <label for="caption">
+        <label htmlFor="caption">
           <h3>Caption</h3>
         </label>
         <textarea

@@ -10,8 +10,9 @@ comment_routes = Blueprint('comments', __name__)
 
 @comment_routes.route('/', methods=["POST"])
 def create_comment():
+    print(request)
     form = CommentForm()
-
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_comment = Comment(user_id=form.data["user_id"],post_id=form.data["post_id"],comment=form.data["comment"])
 

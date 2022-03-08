@@ -15,7 +15,10 @@ const HomePage = () => {
     const posts = Object.values(postsObj)
     const user_id = useSelector(state => state.session.user?.id)
 
+    console.log(posts)
+
     const [comment, setComment] = useState('')
+    const [viewCommentClicked, setViewCommentClicked] = useState(false)
 
 
     useEffect(() => {
@@ -38,6 +41,21 @@ const HomePage = () => {
             setComment('')
         }
     }
+
+    const openPost = () => {
+        if (viewCommentClicked) return;
+        setViewCommentClicked(true);
+    }
+
+    useEffect(() => {
+        if (!viewCommentClicked) return;
+
+        const closePost = () => {
+            setViewCommentClicked(false);
+        }
+
+        document.addEventListener("click", closePost);
+    })
 
 
   if (!sessionUser) return <Redirect to="/login" />;
@@ -90,7 +108,7 @@ const HomePage = () => {
                             <FontAwesomeIcon className='smileface-icon' icon={faFaceSmile} />
                         </div>
                         <textarea value={comment} onChange={(e) => setComment(e.target.value)} className='enter-comment-box' placeholder='Add a comment...' />
-                        <button className='post-comment-button' onClick={() => makeComment()}>Post</button>
+                        <button className='post-comment-button' onClick={() => makeComment(post.id)}>Post</button>
                     </div>
                 </div>
             ))}

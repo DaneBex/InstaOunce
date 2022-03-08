@@ -28,8 +28,7 @@ const removeComment = (id) => {
 }
 
 export const makeComment = (formInfo) => async dispatch => {
-    console.log('Happening!')
-    const response = await fetch('/api/comments', {
+    const response = await fetch('/api/comments/', {
         method: 'post',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(formInfo)
