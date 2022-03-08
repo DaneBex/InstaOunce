@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
+
+import './SignUpForm.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -11,6 +13,7 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  let signUpButton;
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -38,12 +41,89 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  if (username && email && password && repeatPassword) {
+    signUpButton = <button className='signup-button' type='submit'>Sign up</button>
+  } else {
+    signUpButton = <p className='signup-button-nothing'>Sign up</p>
+  }
+
   if (user) {
     return <Redirect to='/' />;
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <div className='main-body'>
+      <div className='main-box'>
+        <h1 className='logo-form'>InstaOunce</h1>
+        <h2>Sign up to see photos and videos <br />from your friends.</h2>
+        <button className='signup-button'>Log in with Demo</button>
+        <p>------------ OR ------------</p>
+        <form
+          onSubmit={onSignUp}>
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div className='input'>
+            <input
+              placeholder='Username'
+              type='text'
+              name='username'
+              onChange={updateUsername}
+              value={username}
+            ></input>
+          </div>
+          <div className='input'>
+            <input
+              placeholder='Email'
+              type='text'
+              name='email'
+              onChange={updateEmail}
+              value={email}
+            ></input>
+          </div>
+          <div className='input'>
+            <input
+              placeholder='Password'
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+            ></input>
+          </div>
+          <div className='input'>
+            <input
+              placeholder='Repeat Password'
+              type='password'
+              name='repeat_password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+            ></input>
+          </div>
+          {signUpButton}
+        </form>
+      </div>
+      <div className='main-signup-form'>
+        <p>Have an account? <NavLink to='/login'>Log in</NavLink></p>
+      </div>
+      <div className='gta'>
+        <p>Get the app.</p>
+      </div>
+      <div className='get-app'>
+        <div>
+          <img src="as.svg" />
+          <img src="ps.svg" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SignUpForm;
+
+{/* <form onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -87,8 +167,4 @@ const SignUpForm = () => {
         ></input>
       </div>
       <button type='submit'>Sign Up</button>
-    </form>
-  );
-};
-
-export default SignUpForm;
+    </form> */}
