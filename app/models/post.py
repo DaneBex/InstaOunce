@@ -1,17 +1,28 @@
+from xmlrpc.client import DateTime
 from .db import db
+import json
 
 class Post(db.Model):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     imageUrl = db.Column(db.Text, nullable=False)
     caption = db.Column(db.Text)
 
+    user = db.relationship("User", back_populates="posts")
+    likes = db.relationship("Like", back_populates="post")
+    comments = db.relationship("Comment", back_populates="post")
+
     def to_dict(self):
+        print('COMMENTS!!!!!!!', self.comments)
         return {
             "id": self.id,
-            "userId": self.userId,
+            "user_id": self.user_id,
             "imageUrl": self.imageUrl,
-            "caption": self.caption
+            "caption": self.caption,
+            "user_prof_pic": self.user.profile_pic,
+            "user_prof_username": self.user.username,
+            "likes": len(self.likes),
+            "comments": [comment.to_dict() for comment in self.comments],
         }
