@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+
+#root {
+    width: 100%;
+    background-color: rgb(250, 250, 250);
+  }
+
 * {
     margin: 0;
     box-sizing: border-box;
@@ -11,7 +17,7 @@ html {
 }
 
 #my-nav{
-    overflow: hidden;
+    overflow: visible;
     position: fixed;
     top: 0;
     width: 100%;
@@ -53,6 +59,7 @@ html {
 #nav-logo-div{
     align-self: center;
     justify-self: center;
+    margin-left: 29%;
 }
 
 #nav-bar {
