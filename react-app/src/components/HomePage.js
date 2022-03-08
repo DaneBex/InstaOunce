@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { populatePosts } from '../store/post';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
+import { faHeart as fatHeart } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faComment, faPaperPlane, faFaceSmile } from '@fortawesome/free-regular-svg-icons'
 import './HomePage.css'
 import { populateLikes } from '../store/like';
@@ -19,6 +20,7 @@ const HomePage = () => {
     console.log(posts)
 
     const [comment, setComment] = useState('')
+    const [like, setLike] = useState(false)
     const [viewCommentClicked, setViewCommentClicked] = useState(false)
 
 
@@ -61,6 +63,13 @@ const HomePage = () => {
 
     if (!sessionUser) return <Redirect to="/login" />;
 
+    const handleClickLike = async (e) => {
+        e.preventDefault();
+        setLike(!like)
+    };
+
+    console.log("AAAASASDASDASDADSADS", like)
+
     return (
         <>
             <NavBar />
@@ -77,7 +86,7 @@ const HomePage = () => {
                         <img className='postbox-image' src={post.imageUrl} />
                         <div className='post-icons'>
                             <div className='heart-div'>
-                                <FontAwesomeIcon className='heart-icon' icon={faHeart} />
+                                <FontAwesomeIcon className={like ? 'heart-icon' : 'fatHeart heart-icon'} onClick={handleClickLike} icon={like ? faHeart : fatHeart} />
                             </div>
                             <div className='comment-div'>
                                 <FontAwesomeIcon className='comment-icon' icon={faComment} />
