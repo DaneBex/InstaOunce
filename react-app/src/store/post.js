@@ -30,6 +30,7 @@ export const populatePosts = () => async (dispatch) => {
     const response = await csrfFetch('/api/posts')
     if (response.ok) {
         const posts = await response.json()
+        console.log(posts)
         dispatch(loadPost(posts))
     }
 }

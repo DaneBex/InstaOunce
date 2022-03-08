@@ -1,3 +1,7 @@
+* {
+    font-size: 14px;
+}
+
 .main-homepage {
     display: flex;
     flex-direction: column;
@@ -19,7 +23,7 @@
 .post-box {
     border: 1px solid grey;
     width: 602px;
-    height: 801.5px;
+    height: auto;
 }
 
 .prof-pic-post {
@@ -46,7 +50,7 @@
     width: 602px;
     margin: 4px 0 0;
     height: 54px;
-    padding: 6px 16px 8px;
+    padding: 6px 6px 8px;
     display: flex;
 }
 
@@ -81,4 +85,72 @@
 .send-icon {
     width: 24px;
     height: 24px;
+}
+
+.likes {
+    width: 602px;
+    height: 18px;
+    margin: 0 0 8px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.postbox-caption-comments {
+    width: 600px;
+    height: 124px;
+    padding: 0 16px;
+}
+
+.postbox-caption {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 568px;
+    height: 54px;
+}
+
+.postbox-caption-username {
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.view-comments-button {
+    color: grey;
+    cursor: pointer;
+}
+
+.add-comment-box {
+    width: 600px;
+    height: 53px;
+    padding: 6px 16px;
+    display: flex;
+    border-top: 1px solid grey;
+    align-items: center;
+}
+
+.smile-div {
+    width: 40px;
+    height: 40px;
+    padding: 8px 16px 8px 0
+}
+
+.smileface-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.enter-comment-box {
+    border: none;
+    width: 497.85px;
+    height: 18px;
+    resize: none;
+    overflow: hidden
+}
+
+.post-comment-button {
+    color: #0095F6;
+    background-color: white;
+    border: none;
+    font-weight: 700;
 }
