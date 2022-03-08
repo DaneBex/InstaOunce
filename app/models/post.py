@@ -1,4 +1,6 @@
+from xmlrpc.client import DateTime
 from .db import db
+import json
 
 class Post(db.Model):
     __tablename__ = 'posts'
@@ -13,6 +15,7 @@ class Post(db.Model):
     comments = db.relationship("Comment", back_populates="post")
 
     def to_dict(self):
+        print('COMMENTS!!!!!!!', self.comments)
         return {
             "id": self.id,
             "user_id": self.user_id,
@@ -20,5 +23,6 @@ class Post(db.Model):
             "caption": self.caption,
             "user_prof_pic": self.user.profile_pic,
             "user_prof_username": self.user.username,
-            "likes": self.likes
+            "likes": len(self.likes),
+            "comments": [comment.to_dict() for comment in self.comments],
         }

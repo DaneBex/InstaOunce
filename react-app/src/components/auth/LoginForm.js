@@ -4,13 +4,13 @@ import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
 import * as sessionActions from "../../store/session"
 
-import './LoginForm.css'
+import "./LoginForm.css";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   let loginButton;
 
