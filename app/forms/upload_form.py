@@ -6,3 +6,5 @@ class UploadForm(FlaskForm):
     imageUrl = StringField('Image Url', validators=[DataRequired()])
     caption = TextAreaField('Caption')
     upload = SubmitField('Upload')
+
+    const handleSubmit = async()
