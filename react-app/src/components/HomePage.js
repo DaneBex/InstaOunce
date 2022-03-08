@@ -15,7 +15,10 @@ const HomePage = () => {
     const posts = Object.values(postsObj)
     const user_id = useSelector(state => state.session.user?.id)
 
+    console.log(posts)
+
     const [comment, setComment] = useState('')
+    const [viewCommentClicked, setViewCommentClicked] = useState(false)
 
 
     useEffect(() => {
@@ -38,6 +41,21 @@ const HomePage = () => {
             setComment('')
         }
     }
+
+    const openPost = () => {
+        if (viewCommentClicked) return;
+        setViewCommentClicked(true);
+    }
+
+    useEffect(() => {
+        if (!viewCommentClicked) return;
+
+        const closePost = () => {
+            setViewCommentClicked(false);
+        }
+
+        document.addEventListener("click", closePost);
+    })
 
 
   if (!sessionUser) return <Redirect to="/login" />;
