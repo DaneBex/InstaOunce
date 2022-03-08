@@ -8,12 +8,13 @@ from app.s3_helpers import (
 post_routes = Blueprint('posts', __name__)
 
 
-@post_routes.route('/')
+@post_routes.route('/posts')
 def posts():
     posts = Post.query.all()
     return {"posts": [post.to_dict() for post in posts]}
 
-@post_routes.route('/upload-image', methods=['POST'])
+
+@post_routes.route('/posts/upload-image', methods=['POST'])
 @login_required
 def upload_image():
     if "image" not in request.files:
@@ -34,3 +35,29 @@ def upload_image():
     db.session.add(new_post)
     db.session.commit()
     return {'url': url}
+
+
+@post_routes.route('/posts/<int:id>')
+def display_image(id):
+    post = Post.query.get(id).first_or_404(description=f'Image {id} does not exist.')
+    return {'single post': post}
+
+
+@post_routes.route('/posts/<int:id>', methods=['POST'])
+@login_required
+def update_image(id):
+    new_caption = request.form.get('new_caption')
+    post = Post.query.get(id).first_or_404(description=f'Image {id} does not exist.')
+    post.caption = new_caption
+    db.session.add(post)
+    db.session.commit()
+    return {'updated post': post}
+
+
+@post_routes.route('/posts/<int:id>', methods=['POST'])
+@login_required
+def delete_image(id):
+    post = Post.query.get(id).first_or_404(description=f'Image {id} does not exist.')
+    db.session.delete(post)
+    db.session.commit()
+    return f'Deleted post {id}'
