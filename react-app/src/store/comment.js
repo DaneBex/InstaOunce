@@ -49,6 +49,18 @@ export const makeComment = (formInfo) => async dispatch => {
     }
 }
 
+export const deleteComment = (id) => async dispatch => {
+    console.log('Yes')
+    console.log(id)
+    const response = await fetch(`/api/comments/${id}`, {
+        method: 'DELETE'
+    })
+
+    if (response.ok) {
+        dispatch(removeComment(id.id))
+    }
+}
+
 const initialState = {}
 
 const commentReducer = (state = initialState, action) => {

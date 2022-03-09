@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import * as postActions from "../../store/post";
 import { useDispatch, useSelector } from "react-redux";
-import { makeComment } from "../../store/comment";
+import { deleteComment, makeComment } from "../../store/comment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsis, faBan } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faComment, faPaperPlane, faFaceSmile } from '@fortawesome/free-regular-svg-icons'
 import { Modal } from "../../context/Modal";
 
@@ -24,6 +24,10 @@ function ViewPost({ post }) {
             dispatch(makeComment(vals))
             setComment('')
         }
+    }
+
+    const removeComment = id => {
+        dispatch(deleteComment(id))
     }
 
     return (
@@ -51,6 +55,7 @@ function ViewPost({ post }) {
                                 <img className='prof-pic-post' src={comment.user_prof_pic} />
                                 <p className='postbox-caption-username-individual'>{comment.user_username}</p>
                                 <p>{comment.comment}</p>
+                                {user_id === comment.user_id && <FontAwesomeIcon onClick={() => removeComment(comment.id)} className='delete-icon' icon={faBan} />}
                             </div>
                         </li>
                     ))}

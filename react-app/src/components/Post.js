@@ -5,10 +5,11 @@ import { populatePosts } from '../store/post'
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
-import { faHeart, faComment, faPaperPlane, faFaceSmile } from '@fortawesome/free-regular-svg-icons'
+import { faEllipsis, faBan } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faComment, faPaperPlane, faFaceSmile} from '@fortawesome/free-regular-svg-icons'
 import ViewPost from './ViewPostModal/ViewPost'
 import ViewPostModal from './ViewPostModal'
+import { deleteComment } from '../store/comment'
 
 const Post = ({ post }) => {
     const dispatch = useDispatch()
@@ -20,6 +21,10 @@ const Post = ({ post }) => {
     const comments = Object.values(commentsObj)
 
     const [viewPost, setViewPost] = useState(false)
+
+    const removeComment = id => {
+        return dispatch(deleteComment(id))
+    }
 
 
 
@@ -91,6 +96,7 @@ const Post = ({ post }) => {
                         <div className='postbox-caption'>
                             <p className='postbox-caption-username'>{comment.user_username}</p>
                             <p>{comment.comment}</p>
+                            {user_id === comment.user_id && <FontAwesomeIcon onClick={() => removeComment(comment.id)} className='delete-icon' icon={faBan} />}
                         </div>
                     ))}
                 </div>
