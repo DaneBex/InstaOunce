@@ -27,9 +27,17 @@ const removeComment = (id) => {
     }
 }
 
+export const populateComments = () => async (dispatch) => {
+    const response = await fetch("/api/comments/");
+    if (response.ok) {
+        const comments = await response.json();
+        dispatch(loadComment(comments))
+    }
+}
+
 export const makeComment = (formInfo) => async dispatch => {
     const response = await fetch('/api/comments/', {
-        method: 'post',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(formInfo)
     })
@@ -37,6 +45,7 @@ export const makeComment = (formInfo) => async dispatch => {
     if (response.ok) {
         const data = await response.json()
         dispatch(addComment(data))
+        return data;
     }
 }
 
@@ -47,7 +56,7 @@ const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_COMMENT:
             newState = {}
-            action.payload.forEach(comment => {
+            action.payload.comments.forEach(comment => {
                 newState[comment.id] = comment
             })
             return newState

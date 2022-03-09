@@ -86,7 +86,7 @@ const NavBar = () => {
               <div className="showmenu-navbar">
                 <NavLink
                   className="navbar-show-profile go-to-profile"
-                  to={`/${sessionUser.username}`}
+                  to={`/users/${sessionUser.id}`}
                   exact={true}
                   activeClassName="active"
                 >

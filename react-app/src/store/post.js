@@ -27,7 +27,7 @@ const removePost = (id) => {
 };
 
 export const populatePosts = () => async (dispatch) => {
-  const response = await csrfFetch("/api/posts");
+  const response = await fetch("/api/posts/");
   if (response.ok) {
     const posts = await response.json();
     dispatch(loadPost(posts));
@@ -35,7 +35,7 @@ export const populatePosts = () => async (dispatch) => {
 };
 
 export const createPost = (payload) => async (dispatch) => {
-  const response = await csrfFetch("/api/posts", {
+  const response = await fetch("/api/posts", {
     method: "POST",
     body: JSON.stringify(payload),
   });
