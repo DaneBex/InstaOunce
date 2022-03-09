@@ -91,3 +91,15 @@ def delete_image(id):
     db.session.delete(post)
     db.session.commit()
     return f'Deleted post {id}'
+
+
+@post_routes.route('/users/<int:id>')
+def getUserPosts(id):
+    posts = Post.query.filter_by(user_id = id).all()
+    print("\n\n",posts,"\n\n")
+    postToDict = []
+    for post in posts:
+        postToDict.append(post.to_dict())
+
+    print("\n\n",postToDict,"\n\n")
+    return {"posts": postToDict}

@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClipboard } from "@fortawesome/free-solid-svg-icons";
+import {
+  faClipboard,
+  faHeart,
+  faComment,
+} from "@fortawesome/free-solid-svg-icons";
+import * as postActions from "../../store/post";
+import { useDispatch, useSelector } from "react-redux";
+
 import "./User.css";
 
 function User() {
+  const dispatch = useDispatch();
+  const userPosts = useSelector((state) => state.post.posts);
   const [user, setUser] = useState({});
   const { userId } = useParams();
+
+  useEffect(() => {
+    dispatch(postActions.userPosts(userId));
+  }, [dispatch]);
 
   useEffect(() => {
     if (!userId) {
@@ -15,7 +28,6 @@ function User() {
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
-      console.log(user);
       setUser(user);
     })();
   }, [userId]);
@@ -55,6 +67,29 @@ function User() {
           <FontAwesomeIcon id="user-profile-post-icon" icon={faClipboard} />{" "}
           Posts
         </p>
+        <div className="user-profile-posts-container">
+          {userPosts?.map((post) => (
+            <div key={post.id} className="user-profile-post-card">
+              <div className="user-profile-post-info">
+                <p>
+                  <FontAwesomeIcon
+                    className="user-profile-post-info-content"
+                    icon={faHeart}
+                  />{" "}
+                  {post.likes}
+                </p>
+                <p>
+                  <FontAwesomeIcon
+                    className="user-profile-post-info-content"
+                    icon={faComment}
+                  />{" "}
+                  {post.comments?.length}
+                </p>
+              </div>
+              <img className="user-profile-post-img" src={post.imageUrl} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
