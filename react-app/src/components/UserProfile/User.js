@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClipboard } from "@fortawesome/free-solid-svg-icons";
 import "./User.css";
 
 function User() {
@@ -29,13 +31,30 @@ function User() {
           <img className="user-profile-pic" src={user.profile_pic} />
         </div>
         <div className="user-profile-info-content">
-          <p className="user-profile-header">{user.username}</p>
+          <div className="user-profile-header-container">
+            <p className="user-profile-header">{user.username}</p>
+            <NavLink to={"/"}>
+              <button className="user-profile-edit-btn">Edit</button>
+            </NavLink>
+          </div>
           <div className="user-profile-stats">
-            <div>{user.follower} posts</div>
-            <div>{user.followers} follows</div>
-            <div>{user.followers} following</div>
+            <div>
+              <strong>{user.followers?.length}</strong> posts
+            </div>
+            <div>
+              <strong>{user.followers?.length}</strong> follows
+            </div>
+            <div>
+              <strong>{user.followers?.length}</strong> following
+            </div>
           </div>
         </div>
+      </div>
+      <div className="user-profile-post-container">
+        <p id="user-profile-post-header">
+          <FontAwesomeIcon id="user-profile-post-icon" icon={faClipboard} />{" "}
+          Posts
+        </p>
       </div>
     </div>
   );
