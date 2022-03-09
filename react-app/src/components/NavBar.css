@@ -22,6 +22,8 @@ html {
     top: 0;
     width: 100%;
     background-color: white;
+    display: grid;
+    grid-auto-flow: row;
 }
 
 #create-post-button {
@@ -59,7 +61,6 @@ html {
 #nav-logo-div{
     align-self: center;
     justify-self: center;
-    margin-left: 29%;
 }
 
 #nav-bar {
@@ -76,8 +77,9 @@ html {
 #nav-not-logo {
     display: flex;
     gap: 40px;
-    margin-right: 20%;
-    margin-left: 25%;
+    align-self: center;
+    justify-self: center;
+    margin-right: 5%;
 }
 
 .showmenu-navbar {
