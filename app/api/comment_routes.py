@@ -24,7 +24,6 @@ def create_comment():
 
         return new_comment.to_dict()
 
-
 @comment_routes.route('/<int:id>', methods=["DELETE"])
 def delete_comment(id):
     one_comment = Comment.query.get(id)
@@ -44,4 +43,3 @@ def update_comment(id):
 
     else:
         print('ERRRROOOORRRRSSS', form.errors)
-

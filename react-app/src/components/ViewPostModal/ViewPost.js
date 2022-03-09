@@ -10,7 +10,6 @@ import { deleteComment } from "../../store/comment";
 import { populatePosts } from '../../store/post'
 import CommentOptionModal from "../CommentOptionModal";
 
-
 function ViewPost({ post }) {
     const dispatch = useDispatch()
     const user_id = useSelector(state => state.session.user?.id)
@@ -31,7 +30,6 @@ function ViewPost({ post }) {
             setComment('')
         }
     }
-
 
     const removeComment = id => {
         dispatch(deleteComment(id))
@@ -70,10 +68,8 @@ function ViewPost({ post }) {
                                 <img className='prof-pic-post' src={comment.user_prof_pic} />
                                 <p className='postbox-caption-username-individual'>{comment.user_username}</p>
                                 <p>{comment.comment}</p>
-
                                 {user_id === comment.user_id && <FontAwesomeIcon onClick={closeCommentOptions} className='delete-icon-dots' icon={faEllipsis} />}
                                 {commentOptions && viewCommentOptions}
-
                             </div>
                         </li>
                     ))}
