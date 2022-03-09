@@ -26,7 +26,6 @@ const Post = ({ post }) => {
     const comments = Object.values(commentsObj);
 
 
-
     const [viewPost, setViewPost] = useState(false)
     const [postOptions, setPostOptions] = useState(false)
     const [commentOptions, setCommentOptions] = useState(false)
@@ -73,12 +72,10 @@ let viewPostNow = <ViewPostModal post={post} />
 let viewPostOptions = <PostOptionModal post={post} />
 let viewCommentOptions = <CommentOptionModal post={post} />
 
-
 const closePost = () => {
     if (viewPost) setViewPost(false);
     else setViewPost(true);
 };
-
 
 
 
