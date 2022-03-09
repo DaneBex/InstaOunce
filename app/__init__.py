@@ -74,7 +74,7 @@ def inject_csrf_token(response):
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def react_root(path):
-    if path == 'instagram.ico':
-        return app.send_static_file('instagram.ico')
+    if path == 'instafav.png':
+        return app.send_static_file('instafav.png')
     # return app.send_static_file('index.html')
     return "<h1>Test</h1>"

@@ -48,7 +48,7 @@ const LoginForm = () => {
     <div className='login-signup-main'>
       <div className='login-signup-article'>
         <div className='is-image-login'>
-          <img className='login-pic' src='https://i5.walmartimages.com/asr/1c1e8882-6647-4f95-b6da-39183898618c.0b325bb079e2cd662542f5c50717c54a.jpeg?odnHeight=580&odnWidth=580&odnBg=FFFFFF' />
+          <img className='login-pic' src='https://www.instagram.com/static/images/homepage/home-phones.png/43cc71bb1b43.png' />
         </div>
         <div className='col'>
           <div className='not-image-login'>
