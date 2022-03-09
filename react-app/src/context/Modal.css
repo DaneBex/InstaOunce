@@ -24,4 +24,21 @@
   background-color: white;
   height: 70%;
   width: 80%;
+  border-radius: 0 5px 5px 0;
+}
+
+#modal-content-two {
+  padding: 25px 0;
+  width: 366px;
+  height: 366px;
+  position: absolute;
+  background-color: white;
+  border-radius: 15px;
+}
+
+#modal-content-three {
+  position: absolute;
+  background-color: white;
+  width: 400px;
+  height: 400px;
 }

@@ -30,6 +30,7 @@ function PostForm() {
     formData.append("image", imageUrl);
     console.log(formData.get('caption'))
 
+
         setImageLoading(true);
         const res = await fetch('/api/posts/upload', {
             method: "POST",
@@ -68,41 +69,45 @@ function PostForm() {
   };
 
   return (
-    <form className="post-form" onSubmit={handleSubmit}>
-      <h2>Create Post</h2>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      <div className="image-input">
-        <label htmlFor="image">
-          <h3>Image</h3>
-        </label>
-        <input
-          className={imageUrl ? "green" : "red"}
-          type="file"
-          accept="image/*"
-          name="image"
-          onChange={updateImage}
-        />
+    <>
+      <div className="mod-title-box">
+        <h2 className="mod-title">Create Post</h2>
       </div>
+      <form className="post-form" onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
+        <div className="image-input">
+          <label htmlFor="image">
+            <h3>Image</h3>
+          </label>
+          <input
+            className={imageUrl ? "green" : "red"}
+            type="file"
+            accept="image/*"
+            name="image"
+            onChange={updateImage}
+          />
+        </div>
 
-      <div className="content-input">
-        <label htmlFor="caption">
-          <h3>Caption</h3>
-        </label>
-        <textarea
-          className="add-post-caption"
-          value={caption}
-          onChange={(e) => setCaption(e.target.value)}
-        ></textarea>
-      </div>
+        <div className="content-input">
+          <label htmlFor="caption">
+            <h3>Caption</h3>
+          </label>
+          <textarea
+            className="add-post-caption"
+            value={caption}
+            onChange={(e) => setCaption(e.target.value)}
+          ></textarea>
+        </div>
 
-      <button className="post-form-btn" type="submit">
-        Post
-      </button>
-    </form>
+        <button className="post-form-btn" type="submit">
+          Post
+        </button>
+      </form>
+    </>
   );
 }
 
