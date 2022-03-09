@@ -18,7 +18,6 @@ const HomePage = () => {
     const user_id = useSelector(state => state.session.user?.id)
 
     console.log(posts)
-    //asdfasdf
 
     const [comment, setComment] = useState('')
     const [like, setLike] = useState(false)
