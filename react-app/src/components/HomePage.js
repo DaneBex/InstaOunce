@@ -10,6 +10,7 @@ import './HomePage.css'
 import { populateLikes } from '../store/like';
 import { populateComments } from '../store/comment';
 import ViewPost from './ViewPostModal/ViewPost';
+import NavBar from './NavBar';
 
 const HomePage = () => {
     const dispatch = useDispatch()
@@ -50,44 +51,20 @@ const HomePage = () => {
         setViewPost(true)
     }
 
-    // const postHead = post => {
-    //     return (
-    //         <div className='whole-page'>
-    //             <img src={post.imageUrl} />
-    //             <div className='post-description'>
-    //                 <div className='header-post'>
-    //                     <div className='image-prof-details'>
-    //                         <img className='prof-pic-post' src={post.user_prof_pic} />
-    //                         <h2>{post.user_prof_username}</h2>
-    //                     </div>
-    //                     <FontAwesomeIcon className='three-dots' icon={faEllipsis} />
-    //                 </div>
-    //                 <ul>
-    //                     <li>
-    //                         <img className='prof-pic-post' src={post.user_prof_pic} />
-    //                         <p>{post.caption}</p>
-    //                     </li>
-    //                 {post.comments && post.comments.map(comment => (
-    //                     <li>
-    //                         <img className='prof-pic-post' src={comment.user_prof_pic} />
-    //                     </li>
-    //                 ))}
-    //                 </ul>
-    //             </div>
-    //         </div>
-    //     )
-    // }
 
 
     if (!sessionUser) return <Redirect to="/login" />;
 
     return (
+        <>
         <div className='main-homepage'>
+
             {posts && posts?.map(post => (
                 <Post post={post} />
             ))}
 
         </div>
+        </>
     )
 }
 
