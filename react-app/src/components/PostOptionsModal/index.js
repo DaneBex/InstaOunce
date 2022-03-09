@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
-import ViewPost from "./ViewPost";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusMinus } from "@fortawesome/free-solid-svg-icons";
+import PostOption from "./PostOption";
 
-function ViewPostModal({post}) {
+function PostOptionModal({post}) {
   const [showModal, setShowModal] = useState(true);
 
   return (
     <>
       {showModal && (
-        <Modal x={'x-out-two'} id={'modal-content'} onClose={() => setShowModal(false)}>
-          <ViewPost post={post} />
+        <Modal x={'x-out'} id={'modal-content-three'} onClose={() => setShowModal(false)}>
+          <PostOption post={post} />
         </Modal>
       )}
     </>
   );
 }
 
-export default ViewPostModal;
+export default PostOptionModal;

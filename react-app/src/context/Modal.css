@@ -22,6 +22,43 @@
 #modal-content {
   position: absolute;
   background-color: white;
-  height: 70%;
+  height: 90%;
   width: 80%;
+  border-radius: 0 5px 5px 0;
+}
+
+#modal-content-two {
+  width: 366px;
+  height: 366px;
+  position: absolute;
+  background-color: white;
+}
+
+#modal-content-three {
+  position: absolute;
+  background-color: white;
+  width: 400px;
+  height: 100px;
+}
+
+#x-out {
+  position: fixed;
+  top: 10%;
+  right: 20%;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  cursor: pointer;
+  z-index: 20;
+}
+
+#x-out-two {
+  position: fixed;
+  top: 0;
+  right: 0%;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  cursor: pointer;
+  z-index: 20;
 }
