@@ -52,6 +52,34 @@
     cursor: pointer;
 }
 
+.all-buttons {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: white;
+}
+
+.viewpost-button {
+    height: 50px;
+    border: none;
+    background-color: white;
+    border-bottom: 1px solid rgba(116, 114, 114, 0.5);
+    cursor: pointer;
+}
+
+.viewpost-navlink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    text-decoration: none;
+    color: black
+}
+
+.viewpost-button:hover {
+    background-color: rgb(236, 236, 236);
+}
+
 .post-box {
     background-color: white;
     border: 1px solid lightgray;
