@@ -33,3 +33,10 @@
   position: absolute;
   background-color: white;
 }
+
+#modal-content-three {
+  position: absolute;
+  background-color: white;
+  width: 400px;
+  height: 400px;
+}

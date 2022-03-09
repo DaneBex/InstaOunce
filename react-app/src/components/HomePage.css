@@ -49,6 +49,7 @@
 
 .three-dots {
     width: 30px;
+    cursor: pointer;
 }
 
 .post-box {

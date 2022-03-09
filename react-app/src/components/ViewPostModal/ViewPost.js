@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEllipsis, faBan } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faComment, faPaperPlane, faFaceSmile } from '@fortawesome/free-regular-svg-icons'
 import { Modal } from "../../context/Modal";
+import { populatePosts } from '../../store/post'
 
 function ViewPost({ post }) {
     const dispatch = useDispatch()
@@ -22,12 +23,14 @@ function ViewPost({ post }) {
                 comment
             }
             dispatch(makeComment(vals))
+            dispatch(populatePosts())
             setComment('')
         }
     }
 
     const removeComment = id => {
         dispatch(deleteComment(id))
+        dispatch(populatePosts())
     }
 
     return (

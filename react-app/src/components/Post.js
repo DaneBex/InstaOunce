@@ -10,6 +10,7 @@ import { faHeart, faComment, faPaperPlane, faFaceSmile} from '@fortawesome/free-
 import ViewPost from './ViewPostModal/ViewPost'
 import ViewPostModal from './ViewPostModal'
 import { deleteComment } from '../store/comment'
+import PostOptionModal from './PostOptionsModal'
 
 const Post = ({ post }) => {
     const dispatch = useDispatch()
@@ -21,9 +22,11 @@ const Post = ({ post }) => {
     const comments = Object.values(commentsObj)
 
     const [viewPost, setViewPost] = useState(false)
+    const [postOptions, setPostOptions] = useState(false)
 
     const removeComment = id => {
-        return dispatch(deleteComment(id))
+        dispatch(deleteComment(id))
+        dispatch(populatePosts())
     }
 
 
@@ -39,22 +42,31 @@ const Post = ({ post }) => {
                 comment
             }
             dispatch(makeComment(vals))
+            dispatch(populatePosts())
             setComment('')
         }
     }
 
-    useEffect(() => {
-        dispatch(populateComments())
-        dispatch(populatePosts())
-    }, [])
+    // useEffect(() => {
+    //     dispatch(populateComments())
+    //     dispatch(populatePosts())
+    // }, [])
 
     const closePost = () => {
         if (viewPost) setViewPost(false)
         else setViewPost(true)
     }
 
-    let viewPostNow
-    viewPostNow = <ViewPostModal post={post} />
+    const closePostOptions = () => {
+        if (postOptions) setPostOptions(false)
+        else setPostOptions(true)
+    }
+
+
+    let viewPostNow = <ViewPostModal post={post} />
+    let viewPostOptions = <PostOptionModal post={post} />
+
+
 
 
 
@@ -65,7 +77,8 @@ const Post = ({ post }) => {
                     <img className='prof-pic-post' src={post.user_prof_pic} />
                     <h2>{post.user_prof_username}</h2>
                 </div>
-                <FontAwesomeIcon className='three-dots' icon={faEllipsis} />
+                <FontAwesomeIcon onClick={closePostOptions} className='three-dots' icon={faEllipsis} />
+                {postOptions && viewPostOptions}
             </div>
             <img className='postbox-image' src={post.imageUrl} />
             <div className='post-icons'>
