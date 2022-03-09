@@ -1,4 +1,5 @@
 
+
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { makeComment, populateComments } from '../store/comment'
@@ -23,6 +24,7 @@ const Post = ({ post }) => {
     const posts = Object.values(postsObj);
     const commentsObj = useSelector((state) => state.comment);
     const comments = Object.values(commentsObj);
+
 
 
     const [viewPost, setViewPost] = useState(false)
@@ -71,10 +73,12 @@ let viewPostNow = <ViewPostModal post={post} />
 let viewPostOptions = <PostOptionModal post={post} />
 let viewCommentOptions = <CommentOptionModal post={post} />
 
+
 const closePost = () => {
     if (viewPost) setViewPost(false);
     else setViewPost(true);
 };
+
 
 
 
@@ -126,6 +130,7 @@ return (
                 <textarea value={comment} onChange={(e) => setComment(e.target.value)} className='enter-comment-box' placeholder='Add a comment...' />
                 <button className='post-comment-button' onClick={makeCommentHandler}>Post</button>
             </div>
+
         </div>
         <textarea
             value={comment}

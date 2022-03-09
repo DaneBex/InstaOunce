@@ -49,6 +49,7 @@ export const makeComment = (formInfo) => async dispatch => {
     }
 }
 
+
 export const editComment = (id, formInfo) => async dispatch => {
     console.log(id)
     const response = await fetch(`/api/comments/${id}`, {
