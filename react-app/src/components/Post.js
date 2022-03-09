@@ -111,7 +111,7 @@ return (
                     <p>{post.caption}</p>
                 </div>
                 <div className='postbox-view-comments'>
-                    <p onClick={closePost} className='view-comments-button'>View all {post.comments.length} comments</p>
+                    <p onClick={closePost} className='view-comments-button'>View all {post.comments?.length} comments</p>
                     {viewPost && viewPostNow}
                 </div>
                 <div className='postbox-comments'>
