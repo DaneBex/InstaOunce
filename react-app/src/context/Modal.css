@@ -41,6 +41,13 @@
   height: 100px;
 }
 
+#modal-content-four {
+  position: absolute;
+  background-color: white;
+  width: 400px;
+  height: 100px;
+}
+
 #x-out {
   position: fixed;
   top: 10%;

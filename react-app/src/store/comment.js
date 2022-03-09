@@ -49,6 +49,20 @@ export const makeComment = (formInfo) => async dispatch => {
     }
 }
 
+export const editComment = (id, formInfo) => async dispatch => {
+    console.log(id)
+    const response = await fetch(`/api/comments/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formInfo)
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(addComment(data))
+    }
+}
+
 export const deleteComment = (id) => async dispatch => {
     console.log('Yes')
     console.log(id)

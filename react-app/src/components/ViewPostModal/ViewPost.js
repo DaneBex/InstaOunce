@@ -7,11 +7,14 @@ import { faEllipsis, faBan } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faComment, faPaperPlane, faFaceSmile } from '@fortawesome/free-regular-svg-icons'
 import { Modal } from "../../context/Modal";
 import { populatePosts } from '../../store/post'
+import CommentOptionModal from "../CommentOptionModal";
 
 function ViewPost({ post }) {
     const dispatch = useDispatch()
     const user_id = useSelector(state => state.session.user?.id)
     const [comment, setComment] = useState('')
+    const [commentOptions, setCommentOptions] = useState(false)
+
 
     const makeCommentHandler = () => {
 
@@ -32,6 +35,13 @@ function ViewPost({ post }) {
         dispatch(deleteComment(id))
         dispatch(populatePosts())
     }
+
+    const closeCommentOptions = () => {
+        if (commentOptions) setCommentOptions(false)
+        else setCommentOptions(true)
+    }
+
+    let viewCommentOptions = <CommentOptionModal post={post} />
 
     return (
         <div className='individual-post'>
@@ -58,7 +68,8 @@ function ViewPost({ post }) {
                                 <img className='prof-pic-post' src={comment.user_prof_pic} />
                                 <p className='postbox-caption-username-individual'>{comment.user_username}</p>
                                 <p>{comment.comment}</p>
-                                {user_id === comment.user_id && <FontAwesomeIcon onClick={() => removeComment(comment.id)} className='delete-icon' icon={faBan} />}
+                                {user_id === comment.user_id && <FontAwesomeIcon onClick={closeCommentOptions} className='delete-icon-dots' icon={faEllipsis} />}
+                                {commentOptions && viewCommentOptions}
                             </div>
                         </li>
                     ))}

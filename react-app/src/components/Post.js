@@ -11,6 +11,8 @@ import ViewPost from './ViewPostModal/ViewPost'
 import ViewPostModal from './ViewPostModal'
 import { deleteComment } from '../store/comment'
 import PostOptionModal from './PostOptionsModal'
+import CommentOptionModal from './CommentOptionModal'
+import Comment from './Comment'
 
 const Post = ({ post }) => {
     const dispatch = useDispatch()
@@ -23,6 +25,7 @@ const Post = ({ post }) => {
 
     const [viewPost, setViewPost] = useState(false)
     const [postOptions, setPostOptions] = useState(false)
+    const [commentOptions, setCommentOptions] = useState(false)
 
     const removeComment = id => {
         dispatch(deleteComment(id))
@@ -62,9 +65,15 @@ const Post = ({ post }) => {
         else setPostOptions(true)
     }
 
+    const closeCommentOptions = () => {
+        if (commentOptions) setCommentOptions(false)
+        else setCommentOptions(true)
+    }
+
 
     let viewPostNow = <ViewPostModal post={post} />
     let viewPostOptions = <PostOptionModal post={post} />
+    let viewCommentOptions = <CommentOptionModal post={post} />
 
 
 
@@ -105,12 +114,8 @@ const Post = ({ post }) => {
                     {viewPost && viewPostNow}
                 </div>
                 <div className='postbox-comments'>
-                    {post.comments && post.comments.slice(0, 2).map(comment => (
-                        <div className='postbox-caption'>
-                            <p className='postbox-caption-username'>{comment.user_username}</p>
-                            <p>{comment.comment}</p>
-                            {user_id === comment.user_id && <FontAwesomeIcon onClick={() => removeComment(comment.id)} className='delete-icon' icon={faBan} />}
-                        </div>
+                    {post.comments && post.comments.slice(0, 2).map(newComment => (
+                        <Comment post={post} comment={newComment} />
                     ))}
                 </div>
             </div>
