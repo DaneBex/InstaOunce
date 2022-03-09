@@ -59,12 +59,15 @@ const HomePage = () => {
     if (!sessionUser) return <Redirect to="/login" />;
 
     return (
-        <div className='main-homepage'>
-            {posts && posts?.map(post => (
-                <Post post={post} />
-            ))}
+        <>
+            <NavBar />
+            <div className='main-homepage'>
+                {posts && posts?.map(post => (
+                    <Post post={post} />
+                ))}
 
-        </div>
+            </div>
+        </>
     )
 }
 
