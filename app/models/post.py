@@ -1,6 +1,4 @@
-from xmlrpc.client import DateTime
 from .db import db
-import json
 
 class Post(db.Model):
     __tablename__ = 'posts'

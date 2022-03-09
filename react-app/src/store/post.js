@@ -1,4 +1,3 @@
-import { csrfFetch } from "./csrf";
 
 const ADD_POST = "post/ADD_POST";
 const REMOVE_POST = "post/REMOVE_POST";
@@ -27,17 +26,17 @@ const removePost = (id) => {
 };
 
 export const populatePosts = () => async (dispatch) => {
-  const response = await csrfFetch("/api/posts");
+  const response = await fetch("/api/posts");
   if (response.ok) {
     const posts = await response.json();
     dispatch(loadPost(posts));
   }
 };
 
-export const createPost = (payload) => async (dispatch) => {
-  const response = await csrfFetch("/api/posts", {
+export const createPost = (formData) => async (dispatch) => {
+  const response = await fetch("/api/posts/upload", {
     method: "POST",
-    body: JSON.stringify(payload),
+    body: formData,
   });
   if (response.ok) {
     const post = await response.json();
