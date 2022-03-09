@@ -187,6 +187,41 @@
     padding: 0 16px;
 }
 
+
+.delete-icon-dots {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}
+
+.comment-option-buttons {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.update-comment-text {
+    display: flex;
+    align-items: center;
+    height: 75%;
+}
+
+.update-comment-textarea {
+}
+
+.delete-comment-button {
+    height: 25%;
+    border: none;
+    color: red;
+    background-color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.delete-comment-button:hover {
+    background-color: rgb(226, 226, 226);
+}
+
 .postbox-caption {
     display: flex;
     align-items: center;
