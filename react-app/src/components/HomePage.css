@@ -39,7 +39,6 @@
 
 .individual-li {
     display: flex;
-    position: relative;
     flex-direction: row;
     align-items: center;
     gap: 5px;
@@ -49,7 +48,6 @@
 
 .three-dots {
     width: 30px;
-    cursor: pointer;
 }
 
 .post-box {
@@ -185,15 +183,8 @@
 
 .postbox-caption-comments {
     width: 600px;
-    position: relative;
     height: auto;
     padding: 0 16px;
-}
-
-.delete-icon {
-    position: absolute;
-    right: 20px;
-    cursor: pointer;
 }
 
 .postbox-caption {

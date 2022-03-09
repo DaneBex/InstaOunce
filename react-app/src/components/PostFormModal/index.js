@@ -14,7 +14,7 @@ function PostFormModal() {
       </button>
 
       {showModal && (
-        <Modal id={'modal-content-two'} onClose={() => setShowModal(false)}>
+        <Modal onClose={() => setShowModal(false)}>
           <PostForm />
         </Modal>
       )}

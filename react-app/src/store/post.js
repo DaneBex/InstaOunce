@@ -4,6 +4,14 @@ const ADD_POST = "post/ADD_POST";
 const REMOVE_POST = "post/REMOVE_POST";
 const UPDATE_POST = "post/UPDATE_POST";
 const LOAD_POST = "post/LOAD_POST";
+const USER_POSTS = "post/USER_POSTS";
+
+const getUserPosts = (posts) => {
+  return {
+    type: USER_POSTS,
+    posts,
+  };
+};
 
 const addPost = (post) => {
   return {
@@ -45,6 +53,15 @@ export const createPost = (payload) => async (dispatch) => {
   }
 };
 
+export const userPosts = (id) => async (dispatch) => {
+  const response = await fetch(`/api/posts/users/${id}`);
+
+  if (response.ok) {
+    const posts = await response.json();
+    dispatch(getUserPosts(posts));
+  }
+};
+
 const initialState = {};
 
 const postReducer = (state = initialState, action) => {
@@ -58,6 +75,10 @@ const postReducer = (state = initialState, action) => {
       return newState;
     case ADD_POST:
       newState = { ...state, [action.post.id]: { ...action.post } };
+      return newState;
+
+    case USER_POSTS:
+      newState = { ...action.posts };
       return newState;
     default:
       return state;
