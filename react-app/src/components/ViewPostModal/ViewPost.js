@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faComment, faPaperPlane, faFaceSmile } from '@fortawesome/free-regular-svg-icons'
 import { Modal } from "../../context/Modal";
+import { deleteComment } from "../../store/comment";
 import { populatePosts } from '../../store/post'
 import CommentOptionModal from "../CommentOptionModal";
 

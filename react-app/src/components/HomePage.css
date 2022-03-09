@@ -48,6 +48,7 @@
 
 .three-dots {
     width: 30px;
+    cursor: pointer;
 }
 
 .post-box {
@@ -227,6 +228,7 @@
     gap: 5px;
     width: 568px;
     height: 40px;
+    position: relative;
 }
 
 .postbox-caption-username {
