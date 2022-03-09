@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { makeComment, populateComments } from '../store/comment'
@@ -15,13 +16,14 @@ import CommentOptionModal from './CommentOptionModal'
 import Comment from './Comment'
 
 const Post = ({ post }) => {
-    const dispatch = useDispatch()
-    const [comment, setComment] = useState('')
-    const user_id = useSelector(state => state.session.user?.id)
-    const postsObj = useSelector(state => state.post)
-    const posts = Object.values(postsObj)
-    const commentsObj = useSelector(state => state.comment)
-    const comments = Object.values(commentsObj)
+  const dispatch = useDispatch();
+  const [comment, setComment] = useState("");
+  const user_id = useSelector((state) => state.session.user?.id);
+  const postsObj = useSelector((state) => state.post);
+  const posts = Object.values(postsObj);
+  const commentsObj = useSelector((state) => state.comment);
+  const comments = Object.values(commentsObj);
+
 
     const [viewPost, setViewPost] = useState(false)
     const [postOptions, setPostOptions] = useState(false)
@@ -31,8 +33,6 @@ const Post = ({ post }) => {
         dispatch(deleteComment(id))
         dispatch(populatePosts())
     }
-
-
 
 
     const makeCommentHandler = () => {
@@ -59,6 +59,8 @@ const Post = ({ post }) => {
         if (viewPost) setViewPost(false)
         else setViewPost(true)
     }
+  };
+
 
     const closePostOptions = () => {
         if (postOptions) setPostOptions(false)
@@ -75,8 +77,13 @@ const Post = ({ post }) => {
     let viewPostOptions = <PostOptionModal post={post} />
     let viewCommentOptions = <CommentOptionModal post={post} />
 
+  const closePost = () => {
+    if (viewPost) setViewPost(false);
+    else setViewPost(true);
+  };
 
-
+  let viewPostNow;
+  viewPostNow = <ViewPostModal post={post} />;
 
 
     return (
@@ -127,7 +134,18 @@ const Post = ({ post }) => {
                 <button className='post-comment-button' onClick={makeCommentHandler}>Post</button>
             </div>
         </div>
-    )
-}
+        <textarea
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          className="enter-comment-box"
+          placeholder="Add a comment..."
+        />
+        <button className="post-comment-button" onClick={makeCommentHandler}>
+          Post
+        </button>
+      </div>
+    </div>
+  );
+};
 
-export default Post
+export default Post;
