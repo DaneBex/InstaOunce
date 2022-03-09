@@ -1,0 +1,74 @@
+.user-profile-container {
+  background-color: rgb(250, 250, 250);
+  height: 100vh;
+}
+
+.user-profile-info-container {
+  margin: 0 auto;
+  padding-top: 40px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-left: 20px;
+  border-bottom: 1px solid rgb(172, 172, 172);
+  padding-bottom: 70px;
+}
+
+.user-profile-pic {
+  height: 150px;
+  width: 150px;
+  border-radius: 45%;
+}
+
+.user-profile-info-content {
+  width: 50%;
+}
+
+.user-profile-header {
+  font-size: 40px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+.user-profile-header-container {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 70px;
+}
+
+.user-profile-stats {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 50px;
+}
+
+.user-profile-edit-btn {
+  border: 2px solid rgb(21, 157, 247);
+  background-color: rgb(250, 250, 250);
+  color: rgb(21, 157, 247);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.user-profile-edit-btn:hover {
+  border: 2px solid rgb(21, 157, 247);
+  background-color: rgb(21, 157, 247);
+  color: rgb(250, 250, 250);
+}
+
+.user-profile-post-container {
+  text-align: center;
+}
+
+#user-profile-post-header {
+  font-size: 20px;
+  margin: 15px auto;
+}
+
+#user-profile-post-icon {
+  font-size: 1.3em;
+}

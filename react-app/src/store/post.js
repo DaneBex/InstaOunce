@@ -26,15 +26,15 @@ const removePost = (id) => {
 };
 
 export const populatePosts = () => async (dispatch) => {
-  const response = await fetch("/api/posts");
+  const response = await fetch("/api/posts/");
   if (response.ok) {
     const posts = await response.json();
     dispatch(loadPost(posts));
   }
 };
 
-export const createPost = (formData) => async (dispatch) => {
-  const response = await fetch("/api/posts/upload", {
+export const createPost = (payload) => async (dispatch) => {
+  const response = await fetch("/api/posts", {
     method: "POST",
     body: formData,
   });
