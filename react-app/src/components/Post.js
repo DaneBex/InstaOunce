@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { faEllipsis, faBan } from '@fortawesome/free-solid-svg-icons'
-import { faHeart, faComment, faPaperPlane, faFaceSmile} from '@fortawesome/free-regular-svg-icons'
+import { faHeart, faComment, faPaperPlane, faFaceSmile } from '@fortawesome/free-regular-svg-icons'
 import ViewPost from './ViewPostModal/ViewPost'
 import ViewPostModal from './ViewPostModal'
 import { deleteComment } from '../store/comment'
@@ -16,13 +16,13 @@ import CommentOptionModal from './CommentOptionModal'
 import Comment from './Comment'
 
 const Post = ({ post }) => {
-  const dispatch = useDispatch();
-  const [comment, setComment] = useState("");
-  const user_id = useSelector((state) => state.session.user?.id);
-  const postsObj = useSelector((state) => state.post);
-  const posts = Object.values(postsObj);
-  const commentsObj = useSelector((state) => state.comment);
-  const comments = Object.values(commentsObj);
+    const dispatch = useDispatch();
+    const [comment, setComment] = useState("");
+    const user_id = useSelector((state) => state.session.user?.id);
+    const postsObj = useSelector((state) => state.post);
+    const posts = Object.values(postsObj);
+    const commentsObj = useSelector((state) => state.comment);
+    const comments = Object.values(commentsObj);
 
 
     const [viewPost, setViewPost] = useState(false)
@@ -55,38 +55,31 @@ const Post = ({ post }) => {
     //     dispatch(populatePosts())
     // }, [])
 
-    const closePost = () => {
-        if (viewPost) setViewPost(false)
-        else setViewPost(true)
-    }
-  };
+
+const closePostOptions = () => {
+    if (postOptions) setPostOptions(false)
+    else setPostOptions(true)
+}
+
+const closeCommentOptions = () => {
+    if (commentOptions) setCommentOptions(false)
+    else setCommentOptions(true)
+}
 
 
-    const closePostOptions = () => {
-        if (postOptions) setPostOptions(false)
-        else setPostOptions(true)
-    }
+let viewPostNow = <ViewPostModal post={post} />
+let viewPostOptions = <PostOptionModal post={post} />
+let viewCommentOptions = <CommentOptionModal post={post} />
 
-    const closeCommentOptions = () => {
-        if (commentOptions) setCommentOptions(false)
-        else setCommentOptions(true)
-    }
-
-
-    let viewPostNow = <ViewPostModal post={post} />
-    let viewPostOptions = <PostOptionModal post={post} />
-    let viewCommentOptions = <CommentOptionModal post={post} />
-
-  const closePost = () => {
+const closePost = () => {
     if (viewPost) setViewPost(false);
     else setViewPost(true);
-  };
-
-  let viewPostNow;
-  viewPostNow = <ViewPostModal post={post} />;
+};
 
 
-    return (
+
+return (
+    <>
         <div className='post-box'>
             <div className='header-post'>
                 <div className='image-prof-details'>
@@ -135,16 +128,15 @@ const Post = ({ post }) => {
             </div>
         </div>
         <textarea
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          className="enter-comment-box"
-          placeholder="Add a comment..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            className="enter-comment-box"
+            placeholder="Add a comment..."
         />
         <button className="post-comment-button" onClick={makeCommentHandler}>
-          Post
+            Post
         </button>
-      </div>
-    </div>
+    </>
   );
 };
 
