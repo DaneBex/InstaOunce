@@ -1,4 +1,3 @@
-
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { makeComment, populateComments } from "../store/comment";
@@ -92,7 +91,6 @@ const Post = ({ post }) => {
 
   return (
     <>
-
       <div className="post-box">
         <div className="header-post">
           <div className="image-prof-details">
@@ -138,8 +136,8 @@ const Post = ({ post }) => {
             {post.comments &&
               post.comments
                 .slice(0, 2)
-                .map((newComment) => (
-                  <Comment post={post} comment={newComment} />
+                .map((newComment, id) => (
+                  <Comment key={id} post={post} comment={newComment} />
                 ))}
           </div>
         </div>
