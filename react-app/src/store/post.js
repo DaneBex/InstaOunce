@@ -72,6 +72,20 @@ export const deletePost = (id) => async dispatch => {
     }
 }
 
+export const editPost = (id, formInfo) => async dispatch => {
+    console.log(formInfo)
+    const response = fetch(`/api/posts/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type:': 'application/json' },
+        body: JSON.stringify(formInfo)
+    }).then(data => data.json()).catch(e => console.log(e))
+
+    // if (response.ok) {
+    //     const data = await response.json()
+    //     dispatch(addPost(data))
+    // }
+}
+
 const initialState = {};
 
 const postReducer = (state = initialState, action) => {

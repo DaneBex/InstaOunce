@@ -1,0 +1,13 @@
+.edit-caption {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.enter-edit-text {
+    height: 50%;
+    resize: none;
+    width: 75%;
+}

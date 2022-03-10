@@ -11,12 +11,15 @@ import { useDispatch, useSelector } from "react-redux";
 import ViewPostModal from "../ViewPostModal";
 
 import "./User.css";
+import { followUser } from "../../store/user";
 
 function User() {
   const dispatch = useDispatch();
   const userPosts = useSelector((state) => state.post.posts);
+  const user_id = useSelector(state => state.session.user?.id)
   const [user, setUser] = useState({});
   const { userId } = useParams();
+  console.log('UserId:',userId,'User_id:', user_id)
 
   const [viewPost, setViewPost] = useState(false)
 
@@ -39,10 +42,15 @@ function User() {
     return null;
   }
 
+  const makeFollow = () => {
+    console.log('yes')
+    dispatch(followUser(user_id, userId))
+  }
+
   const closePost = () => {
     if (viewPost) setViewPost(false);
     else setViewPost(true);
-};
+  };
 
 
   return (
@@ -54,9 +62,14 @@ function User() {
         <div className="user-profile-info-content">
           <div className="user-profile-header-container">
             <p className="user-profile-header">{user.username}</p>
-            <NavLink to={"/"}>
-              <button className="user-profile-edit-btn">Edit</button>
-            </NavLink>
+            {user_id === parseInt(userId) &&
+              <NavLink to={"/"}>
+                <button className="user-profile-edit-btn">Edit</button>
+              </NavLink>
+            }
+            {user_id !== parseInt(userId) &&
+            <button onClick={makeFollow} className="user-profile-edit-btn">Follow</button>
+            }
           </div>
           <div className="user-profile-stats">
             <div>
@@ -95,7 +108,7 @@ function User() {
                   {post.comments?.length}
                 </p>
               </div>
-              <img  className="user-profile-post-img" src={post.imageUrl} />
+              <img className="user-profile-post-img" src={post.imageUrl} />
               {viewPost && <ViewPostModal post={post} />}
             </div>
           ))}

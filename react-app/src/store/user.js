@@ -20,6 +20,15 @@ export const populateUsers = () => async dispatch => {
     }
 }
 
+export const followUser = (self, user) => async dispatch => {
+    console.log('happening')
+    const response = await fetch(`/api/users/${self}/${user}`)
+
+    if (response.ok) {
+        console.log(response)
+    }
+}
+
 const initialState = {};
 
 const userReducer = (state = initialState, action) => {
