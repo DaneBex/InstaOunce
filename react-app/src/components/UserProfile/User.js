@@ -91,7 +91,7 @@ function User() {
         </p>
         <div className="user-profile-posts-container">
           {userPosts?.map((post) => (
-            <div key={post.id} onClick={closePost} className="user-profile-post-card">
+            <div key={post.id} onDoubleClick={closePost} className="user-profile-post-card">
               <div className="user-profile-post-info">
                 <p>
                   <FontAwesomeIcon
