@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Blueprint, request
 from app.models import Post, db
 from flask_login import current_user, login_required
@@ -83,3 +84,14 @@ def delete_post(id):
     db.session.delete(one_post)
     db.session.commit()
     return {"id": id}
+
+
+@post_routes.route('/<int:id>', methods=["PUT"])
+def update_post(id):
+    print('!!!!!!!!!!!!!\n!!!!!!!!!!!!')
+
+    one_post = Post.query.get(id)
+    one_post.caption = request.json
+    db.session.add(one_post)
+    db.session.commit()
+    return one_post.to_dict()
