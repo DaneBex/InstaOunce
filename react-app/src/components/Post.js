@@ -156,15 +156,6 @@ const Post = ({ post }) => {
           </button>
         </div>
       </div>
-      <textarea
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}
-        className="enter-comment-box"
-        placeholder="Add a comment..."
-      />
-      <button className="post-comment-button" onClick={makeCommentHandler}>
-        Post
-      </button>
     </>
   );
 };
