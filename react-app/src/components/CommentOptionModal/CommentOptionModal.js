@@ -20,6 +20,7 @@ const CommentOption = ({ post, comment }) => {
         }
     }
 
+
     const removeComment = id => {
         dispatch(deleteComment(id))
         dispatch(populatePosts())

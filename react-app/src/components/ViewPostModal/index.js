@@ -10,7 +10,7 @@ function ViewPostModal({post}) {
   return (
     <>
       {showModal && (
-        <Modal x={'x-out-two'} id={'modal-content'} onClose={() => setShowModal(false)}>
+        <Modal closeOn={'close-two'} x={'x-out-two'} id={'modal-content'} onClose={() => setShowModal(false)}>
           <ViewPost post={post} />
         </Modal>
       )}

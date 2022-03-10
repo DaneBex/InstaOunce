@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import * as postActions from "../../store/post";
 import { useDispatch, useSelector } from "react-redux";
+import ViewPostModal from "../ViewPostModal";
 
 import "./User.css";
 
@@ -16,6 +17,8 @@ function User() {
   const userPosts = useSelector((state) => state.post.posts);
   const [user, setUser] = useState({});
   const { userId } = useParams();
+
+  const [viewPost, setViewPost] = useState(false)
 
   useEffect(() => {
     dispatch(postActions.userPosts(userId));
@@ -35,6 +38,12 @@ function User() {
   if (!user) {
     return null;
   }
+
+  const closePost = () => {
+    if (viewPost) setViewPost(false);
+    else setViewPost(true);
+};
+
 
   return (
     <div className="user-profile-container">
@@ -69,7 +78,7 @@ function User() {
         </p>
         <div className="user-profile-posts-container">
           {userPosts?.map((post) => (
-            <div key={post.id} className="user-profile-post-card">
+            <div key={post.id} onClick={closePost} className="user-profile-post-card">
               <div className="user-profile-post-info">
                 <p>
                   <FontAwesomeIcon
@@ -86,7 +95,8 @@ function User() {
                   {post.comments?.length}
                 </p>
               </div>
-              <img className="user-profile-post-img" src={post.imageUrl} />
+              <img  className="user-profile-post-img" src={post.imageUrl} />
+              {viewPost && <ViewPostModal post={post} />}
             </div>
           ))}
         </div>

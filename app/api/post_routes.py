@@ -76,3 +76,10 @@ def getUserPosts(id):
 
     print("\n\n",postToDict,"\n\n")
     return {"posts": postToDict}
+
+@post_routes.route('/<int:id>', methods=['DELETE'])
+def delete_post(id):
+    one_post = Post.query.get(id)
+    db.session.delete(one_post)
+    db.session.commit()
+    return {"id": id}

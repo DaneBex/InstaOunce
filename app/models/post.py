@@ -9,8 +9,8 @@ class Post(db.Model):
     caption = db.Column(db.Text)
 
     user = db.relationship("User", back_populates="posts")
-    likes = db.relationship("Like", back_populates="post")
-    comments = db.relationship("Comment", back_populates="post")
+    likes = db.relationship("Like", back_populates="post", cascade="all, delete")
+    comments = db.relationship("Comment", back_populates="post", cascade="all, delete")
 
     def to_dict(self):
         return {
