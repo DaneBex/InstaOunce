@@ -121,9 +121,11 @@
 .heart-icon {
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 .fatHeart {
   color: red;
+  cursor: pointer;
 }
 
 .comment-div {
@@ -135,12 +137,14 @@
 .comment-icon {
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 
 .send-div {
   height: 40px;
   width: 40px;
   padding: 8px;
+  cursor: pointer;
 }
 
 #modal-contentTwo {

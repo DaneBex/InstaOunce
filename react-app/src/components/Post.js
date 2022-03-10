@@ -117,12 +117,12 @@ const Post = ({ post }) => {
           <div className="heart-div" onClick={handleLike}>
             <FontAwesomeIcon
               className={
-                post.likes_list?.find((like) => like.user_id === user_id)
+                post?.likes_list?.find((like) => like.user_id === user_id)
                   ? "heart-icon red-icon"
                   : "heart-icon"
               }
               icon={
-                post.likes_list?.find((like) => like.user_id === user_id)
+                post?.likes_list?.find((like) => like.user_id === user_id)
                   ? fatHeart
                   : faHeart
               }
