@@ -62,6 +62,16 @@ export const userPosts = (id) => async (dispatch) => {
   }
 };
 
+export const deletePost = (id) => async dispatch => {
+    const response = await fetch(`/api/posts/${id}`, {
+        method: 'DELETE'
+    })
+
+    if (response.ok) {
+        dispatch(removePost(id))
+    }
+}
+
 const initialState = {};
 
 const postReducer = (state = initialState, action) => {
@@ -76,10 +86,13 @@ const postReducer = (state = initialState, action) => {
     case ADD_POST:
       newState = { ...state, [action.post.id]: { ...action.post } };
       return newState;
-
     case USER_POSTS:
       newState = { ...action.posts };
       return newState;
+    case REMOVE_POST:
+        newState = { ...state }
+        delete newState[action.id]
+        return newState
     default:
       return state;
   }

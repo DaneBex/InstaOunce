@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as postActions from "../../store/post";
 import { useDispatch, useSelector } from "react-redux";
 import { makeComment } from "../../store/comment";
@@ -9,12 +9,17 @@ import { Modal } from "../../context/Modal";
 import { deleteComment } from "../../store/comment";
 import { populatePosts } from '../../store/post'
 import CommentOptionModal from "../CommentOptionModal";
+import LargeCommentOption from "../Comment-Large";
 
 function ViewPost({ post }) {
     const dispatch = useDispatch()
     const user_id = useSelector(state => state.session.user?.id)
     const [comment, setComment] = useState('')
     const [commentOptions, setCommentOptions] = useState(false)
+
+    useEffect(() => {
+        populatePosts()
+    }, [])
 
 
     const makeCommentHandler = () => {
@@ -27,6 +32,7 @@ function ViewPost({ post }) {
                 comment
             }
             dispatch(makeComment(vals))
+            dispatch(populatePosts())
             setComment('')
         }
     }
@@ -63,15 +69,7 @@ function ViewPost({ post }) {
                         </div>
                     </li>
                     {post.comments && post.comments.map(comment => (
-                        <li >
-                            <div className="individual-li">
-                                <img className='prof-pic-post' src={comment.user_prof_pic} />
-                                <p className='postbox-caption-username-individual'>{comment.user_username}</p>
-                                <p>{comment.comment}</p>
-                                {user_id === comment.user_id && <FontAwesomeIcon onClick={closeCommentOptions} className='delete-icon-dots' icon={faEllipsis} />}
-                                {commentOptions && viewCommentOptions}
-                            </div>
-                        </li>
+                        <LargeCommentOption post={post} comment={comment} />
                     ))}
                 </ul>
                 <div className='post-icons-individual'>

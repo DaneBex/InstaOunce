@@ -16,6 +16,7 @@ const Comment = ({ post, comment }) => {
         else setCommentOptions(true)
     }
 
+
     let viewCommentOptions = <CommentOptionModal post={post} comment={comment} />
 
     return (
