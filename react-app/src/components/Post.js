@@ -95,10 +95,15 @@ const Post = ({ post }) => {
       <div className="post-box">
         <div className="header-post">
           <div className="image-prof-details">
-            <NavLink to={`/users/${post.user_id}`} >
-            <img className="prof-pic-post" src={post.user_prof_pic} />
+            <NavLink to={`/users/${post.user_id}`}>
+              <img className="prof-pic-post" src={post.user_prof_pic} />
             </NavLink>
-            <NavLink to={`/users/${post.user_id}`} className="prof-details-username">{post.user_prof_username}</NavLink>
+            <NavLink
+              to={`/users/${post.user_id}`}
+              className="prof-details-username"
+            >
+              {post.user_prof_username}
+            </NavLink>
           </div>
           <FontAwesomeIcon
             onClick={closePostOptions}
@@ -112,12 +117,12 @@ const Post = ({ post }) => {
           <div className="heart-div" onClick={handleLike}>
             <FontAwesomeIcon
               className={
-                post.likes_list.find((like) => like.user_id === user_id)
+                post.likes_list?.find((like) => like.user_id === user_id)
                   ? "heart-icon red-icon"
                   : "heart-icon"
               }
               icon={
-                post.likes_list.find((like) => like.user_id === user_id)
+                post.likes_list?.find((like) => like.user_id === user_id)
                   ? fatHeart
                   : faHeart
               }
