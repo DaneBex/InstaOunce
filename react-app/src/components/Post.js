@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { faEllipsis, faBan } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as fatHeart } from "@fortawesome/free-solid-svg-icons";
 import {
   faHeart,
   faComment,
@@ -94,10 +95,15 @@ const Post = ({ post }) => {
       <div className="post-box">
         <div className="header-post">
           <div className="image-prof-details">
-            <NavLink to={`/users/${post.user_id}`} >
-            <img className="prof-pic-post" src={post.user_prof_pic} />
+            <NavLink to={`/users/${post.user_id}`}>
+              <img className="prof-pic-post" src={post.user_prof_pic} />
             </NavLink>
-            <NavLink to={`/users/${post.user_id}`} className="prof-details-username">{post.user_prof_username}</NavLink>
+            <NavLink
+              to={`/users/${post.user_id}`}
+              className="prof-details-username"
+            >
+              {post.user_prof_username}
+            </NavLink>
           </div>
           <FontAwesomeIcon
             onClick={closePostOptions}
@@ -109,7 +115,18 @@ const Post = ({ post }) => {
         <img className="postbox-image" src={post.imageUrl} />
         <div className="post-icons">
           <div className="heart-div" onClick={handleLike}>
-            <FontAwesomeIcon className="heart-icon" icon={faHeart} />
+            <FontAwesomeIcon
+              className={
+                post?.likes_list?.find((like) => like.user_id === user_id)
+                  ? "heart-icon red-icon"
+                  : "heart-icon"
+              }
+              icon={
+                post?.likes_list?.find((like) => like.user_id === user_id)
+                  ? fatHeart
+                  : faHeart
+              }
+            />
           </div>
           <div className="comment-div">
             <FontAwesomeIcon className="comment-icon" icon={faComment} />

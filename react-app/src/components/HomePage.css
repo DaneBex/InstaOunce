@@ -1,63 +1,63 @@
 * {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .main-homepage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .post-description-individual {
-    width: 40%;
+  width: 40%;
 }
 
 .header-post {
-    width: 602px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
+  width: 602px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
 }
 
 .header-post-individual {
-    width: 100%;
-    height: 10%;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(116, 114, 114, 0.5);
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(116, 114, 114, 0.5);
 }
 
 .comment-list {
-    overflow-y: scroll;
-    height: 60%;
-    list-style: none;
-    padding: 16px;
-    border-bottom: 1px solid rgba(116, 114, 114, 0.5);
+  overflow-y: scroll;
+  height: 60%;
+  list-style: none;
+  padding: 16px;
+  border-bottom: 1px solid rgba(116, 114, 114, 0.5);
 }
 
 .individual-li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
-    margin: -5px -2px 0 0;
-    padding: 12px 0 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  margin: -5px -2px 0 0;
+  padding: 12px 0 16px;
 }
 
 .three-dots {
-    width: 30px;
-    cursor: pointer;
+  width: 30px;
+  cursor: pointer;
 }
 
 .post-box {
-    background-color: white;
-    border: 1px solid lightgray;
-    width: 602px;
-    height: auto;
-    margin-bottom: 20px;
-    border-radius: 3px;
+  background-color: white;
+  border: 1px solid lightgray;
+  width: 602px;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 3px;
 }
 
 .prof-pic-post {
@@ -74,106 +74,108 @@
     font-weight: 700;
 }
 
-
 .postbox-image {
-    width: 600px;
-    height: 450px;
-    object-fit: cover;
+  width: 600px;
+  height: 450px;
+  object-fit: cover;
 }
 
 .image-prof-details {
-    display: flex;
-    width: 552px;
-    padding: 14px 4px 14px 16px;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  width: 552px;
+  padding: 14px 4px 14px 16px;
+  align-items: center;
+  gap: 10px;
 }
 
 .image-prof-details-individual {
-    display: flex;
-    width: 100%;
-    padding: 14px 4px 14px 16px;
-    align-items: center;
-    gap: 10px;
-
+  display: flex;
+  width: 100%;
+  padding: 14px 4px 14px 16px;
+  align-items: center;
+  gap: 10px;
 }
 
 .post-icons {
-    width: 602px;
-    margin: 4px 0 0;
-    height: 54px;
-    padding: 6px 6px 8px;
-    display: flex;
+  width: 602px;
+  margin: 4px 0 0;
+  height: 54px;
+  padding: 6px 6px 8px;
+  display: flex;
 }
 
 .post-icons-individual {
-    width: 100%;
-    margin: 4px 0 0;
-    height: 10%;
-    padding: 6px 6px 8px;
-    display: flex;
+  width: 100%;
+  margin: 4px 0 0;
+  height: 10%;
+  padding: 6px 6px 8px;
+  display: flex;
 }
 
 .heart-div {
-    width: 40px;
-    height: 40px;
-    padding: 8px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
 }
 
 .heart-icon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }
-.fatHeart{
-    color: red;
+.fatHeart {
+  color: red;
+  cursor: pointer;
 }
 
 .comment-div {
-    height: 40px;
-    width: 40px;
-    padding: 8px;
+  height: 40px;
+  width: 40px;
+  padding: 8px;
 }
 
 .comment-icon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }
 
 .send-div {
-    height: 40px;
-    width: 40px;
-    padding: 8px;
+  height: 40px;
+  width: 40px;
+  padding: 8px;
+  cursor: pointer;
 }
 
 #modal-contentTwo {
-    position: absolute;
-    background-color: white;
-    height: 300px;
-    width: 300px;
-    border-radius: 5px;
+  position: absolute;
+  background-color: white;
+  height: 300px;
+  width: 300px;
+  border-radius: 5px;
 }
 
 .send-icon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 .likes {
-    width: 602px;
-    height: 18px;
-    margin: 0 0 8px;
-    padding: 0 16px;
-    font-size: 14px;
-    font-weight: 800;
+  width: 602px;
+  height: 18px;
+  margin: 0 0 8px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 800;
 }
 
 .likes-individual {
-    width: 100%;
-    height: 5%;
-    margin: 0 0 8px;
-    padding: 0 16px;
-    font-size: 14px;
-    font-weight: 800;
+  width: 100%;
+  height: 5%;
+  margin: 0 0 8px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 800;
 }
 
 .individual-post {
@@ -181,17 +183,21 @@
   height: 100%;
 }
 
-.individual-post-image {
-    width: 60%;
-    object-fit: cover;
+.red-icon {
+  color: red;
+}
 
+.individual-post-image {
+  width: 60%;
+  object-fit: cover;
 }
 
 .owner-post-options {
-    display: flex;
-    width: 100%;
-    border-top: 1px solid rgba(116, 114, 114, 0.5);
+  display: flex;
+  width: 100%;
+  border-top: 1px solid rgba(116, 114, 114, 0.5);
 }
+
 
 
 .update-post-user{
@@ -204,145 +210,143 @@
 }
 
 .update-post-user:hover {
-    background-color: rgba(116, 114, 114, 0.5);;
+  background-color: rgba(116, 114, 114, 0.5);
 }
 
 .delete-post-button {
-    border: none;
-    color: red;
-    font-weight: 700;
-    cursor: pointer;
-    background-color: white;
-    width: 50%;
+  border: none;
+  color: red;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: white;
+  width: 50%;
 }
 
 .delete-post-button:hover {
-background-color: rgba(116, 114, 114, 0.5);;
+  background-color: rgba(116, 114, 114, 0.5);
 }
 
 .postbox-view-comments {
-    position: relative;
+  position: relative;
 }
 
-
-
 .postbox-caption-comments {
-    width: 600px;
-    height: auto;
-    padding: 0 16px;
-    padding-bottom: 5px;
+  width: 600px;
+  height: auto;
+  padding: 0 16px;
+  padding-bottom: 5px;
 }
 
 .delete-icon-dots {
-    position: absolute;
-    right: 20px;
-    cursor: pointer;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
 }
 
 .comment-option-buttons {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .update-comment-text {
-    display: flex;
-    align-items: center;
-    height: 75%;
+  display: flex;
+  align-items: center;
+  height: 75%;
 }
 
 .update-comment-textarea {
 }
 
 .delete-comment-button {
-    height: 25%;
-    border: none;
-    color: red;
-    background-color: white;
-    font-weight: 700;
-    cursor: pointer;
+  height: 25%;
+  border: none;
+  color: red;
+  background-color: white;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .delete-comment-button:hover {
-    background-color: rgb(226, 226, 226);
+  background-color: rgb(226, 226, 226);
 }
 
 .postbox-caption {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 568px;
-    height: 40px;
-    position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 568px;
+  height: 40px;
+  position: relative;
 }
 
 .postbox-caption-username {
-    font-size: 14px;
-    font-weight: 800;
+  font-size: 14px;
+  font-weight: 800;
 }
 
 .postbox-caption-username-individual {
-    font-size: 14px;
-    font-weight: 800;
-    padding: 0, 10px;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 0, 10px;
 }
 
 .view-comments-button {
-    color: grey;
-    cursor: pointer;
+  color: grey;
+  cursor: pointer;
 }
 
 .add-comment-box {
-    width: 600px;
-    height: 53px;
-    padding: 6px 16px;
-    display: flex;
-    border-top: 1px solid lightgray;
-    align-items: center;
+  width: 600px;
+  height: 53px;
+  padding: 6px 16px;
+  display: flex;
+  border-top: 1px solid lightgray;
+  align-items: center;
 }
 
 .add-comment-box-individual {
-    width: 100%;
-    height: 10%;
-    padding: 6px 16px;
-    display: flex;
-    border-top: 1px solid grey;
-    align-items: center;
+  width: 100%;
+  height: 10%;
+  padding: 6px 16px;
+  display: flex;
+  border-top: 1px solid grey;
+  align-items: center;
 }
 
 .smile-div {
-    width: 40px;
-    height: 40px;
-    padding: 8px 16px 8px 0
+  width: 40px;
+  height: 40px;
+  padding: 8px 16px 8px 0;
 }
 
 .smileface-icon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 .enter-comment-box {
-    border: none;
-    width: 497.85px;
-    height: 18px;
-    resize: none;
-    overflow: hidden;
-    outline: none;
+  border: none;
+  width: 497.85px;
+  height: 18px;
+  resize: none;
+  overflow: hidden;
+  outline: none;
 }
 
 .enter-comment-box-individual {
-    border: none;
-    width: 90%;
-    height: 18px;
-    resize: none;
-    overflow: hidden;
-    outline: none;
+  border: none;
+  width: 90%;
+  height: 18px;
+  resize: none;
+  overflow: hidden;
+  outline: none;
 }
 
 .post-comment-button {
-    color: #0095F6;
-    background-color: white;
-    border: none;
-    font-weight: 700;
-    cursor: pointer;
+  color: #0095f6;
+  background-color: white;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
 }

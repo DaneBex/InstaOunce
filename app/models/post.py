@@ -22,5 +22,6 @@ class Post(db.Model):
             "user_prof_username": self.user.username,
             "user_id": self.user.id,
             "likes": len(self.likes),
+            "likes_list": [like.to_dict() for like in self.likes],
             "comments": [comment.to_dict() for comment in self.comments],
         }
