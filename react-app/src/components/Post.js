@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { makeComment, populateComments } from "../store/comment";
 import { populatePosts } from "../store/post";
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { faEllipsis, faBan } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -94,8 +94,10 @@ const Post = ({ post }) => {
       <div className="post-box">
         <div className="header-post">
           <div className="image-prof-details">
+            <NavLink to={`/users/${post.user_id}`} >
             <img className="prof-pic-post" src={post.user_prof_pic} />
-            <h2>{post.user_prof_username}</h2>
+            </NavLink>
+            <NavLink to={`/users/${post.user_id}`} className="prof-details-username">{post.user_prof_username}</NavLink>
           </div>
           <FontAwesomeIcon
             onClick={closePostOptions}

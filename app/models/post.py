@@ -20,6 +20,7 @@ class Post(db.Model):
             "caption": self.caption,
             "user_prof_pic": self.user.profile_pic,
             "user_prof_username": self.user.username,
+            "user_id": self.user.id,
             "likes": len(self.likes),
             "comments": [comment.to_dict() for comment in self.comments],
         }
