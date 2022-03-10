@@ -11,6 +11,7 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/')
 def posts():
     posts = Post.query.all()
+    print('\n\n THESE ARE THE POSTS: \n\n', posts)
     return {"posts": [post.to_dict() for post in posts]}
 
 

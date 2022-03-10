@@ -14,13 +14,6 @@ function PostForm() {
   const [errors, setErrors] = useState([]);
   const [imageLoading, setImageLoading] = useState(false);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append("caption", caption);
-  //   formData.append("imageUrl", 'testing');
-  //   await dispatch(createPost(formData))
-  // }
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
@@ -37,7 +30,6 @@ function PostForm() {
         });
         if (res.ok) {
             s3Url = await res.json();
-            console.log('This is the S3 url:', s3Url)
             setImageLoading(false);
             history.push("/posts");
         }
@@ -45,20 +37,6 @@ function PostForm() {
             setImageLoading(false);
             console.log("error");
         }
-    // return dispatch(
-    //   postActions.createPost({
-    //     caption,
-    //     imageUrl: s3Url,
-    //     user_id: sessionUser.id,
-    //   })
-    // )
-    //   .then((data) => {
-    //     history.push(`/`);
-    //   })
-    //   .catch(async (res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) setErrors(data.errors);
-    //   });
   };
 
   const updateImage = (e) => {
