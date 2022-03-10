@@ -63,27 +63,27 @@ export const userPosts = (id) => async (dispatch) => {
 };
 
 export const deletePost = (id) => async dispatch => {
-    const response = await fetch(`/api/posts/${id}`, {
-        method: 'DELETE'
-    })
+  const response = await fetch(`/api/posts/${id}`, {
+    method: 'DELETE'
+  })
 
-    if (response.ok) {
-        dispatch(removePost(id))
-    }
+  if (response.ok) {
+    dispatch(removePost(id))
+  }
 }
 
 export const editPost = (id, formInfo) => async dispatch => {
-    console.log(formInfo)
-    const response = await fetch(`/api/posts/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type:': 'application/json' },
-        body: JSON.stringify(formInfo)
-    })
+  console.log(formInfo)
+  const response = await fetch(`/api/posts/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formInfo)
+  })
 
-    if (response.ok) {
-        const data = await response.json()
-        dispatch(addPost(data))
-    }
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(addPost(data))
+  }
 }
 
 const initialState = {};
@@ -104,9 +104,9 @@ const postReducer = (state = initialState, action) => {
       newState = { ...action.posts };
       return newState;
     case REMOVE_POST:
-        newState = { ...state }
-        delete newState[action.id]
-        return newState
+      newState = { ...state }
+      delete newState[action.id]
+      return newState
     default:
       return state;
   }
