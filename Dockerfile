@@ -1,11 +1,11 @@
-FROM node:12 AS build-stage
+FROM node:16 AS build-stage
 
 WORKDIR /react-app
 COPY react-app/. .
 
 # You have to set this because it should be set during build time.
 
-ENV REACT_APP_BASE_URL=https://instaounceapp.herokuapp.com
+ENV REACT_APP_BASE_URL=https://instaounce1.herokuapp.com
 
 # Build our React App
 RUN npm install
