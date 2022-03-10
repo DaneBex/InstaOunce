@@ -19,7 +19,7 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route('/<int:id>/<int:id>')
+@user_routes.route('/<int:user_id>/<int:follow_id>')
 def follow_user(user_id, follow_id):
     user = User.query.get(user_id)
     follow_this = User.query.get(follow_id)
