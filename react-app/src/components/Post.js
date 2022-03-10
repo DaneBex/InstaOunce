@@ -112,7 +112,7 @@ const Post = ({ post }) => {
           />
           {postOptions && viewPostOptions}
         </div>
-        <img className="postbox-image" src={post.imageUrl} />
+        <img className="postbox-image" onDoubleClick={handleLike} src={post.imageUrl} />
         <div className="post-icons">
           <div className="heart-div" onClick={handleLike}>
             <FontAwesomeIcon
