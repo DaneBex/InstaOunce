@@ -48,6 +48,7 @@
 
 .three-dots {
     width: 30px;
+    cursor: pointer;
 }
 
 .post-box {
@@ -187,7 +188,6 @@
     padding: 0 16px;
 }
 
-
 .delete-icon-dots {
     position: absolute;
     right: 20px;
@@ -228,6 +228,7 @@
     gap: 5px;
     width: 568px;
     height: 40px;
+    position: relative;
 }
 
 .postbox-caption-username {

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { makeComment, populateComments } from "../store/comment";
@@ -91,6 +92,7 @@ const Post = ({ post }) => {
 
   return (
     <>
+
       <div className="post-box">
         <div className="header-post">
           <div className="image-prof-details">

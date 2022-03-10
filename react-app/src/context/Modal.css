@@ -10,6 +10,39 @@
   align-items: center;
 }
 
+.all-buttons {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.viewpost-button {
+  height: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+}
+
+.viewpost-button:hover {
+  background-color: rgb(219, 219, 219);
+}
+
+.viewpost-navlink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  height: 50%;
+  border-top: 1px solid rgb(219, 219, 219);
+}
+
+.viewpost-navlink:hover {
+  background-color: rgb(219, 219, 219);
+}
+
+
 #modal-background {
   position: fixed;
   top: 0;
