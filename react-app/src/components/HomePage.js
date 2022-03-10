@@ -17,13 +17,12 @@ const HomePage = () => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const postsObj = useSelector(state => state.post)
-    const posts = Object.values(postsObj)
+    const postsList = Object.values(postsObj)
+    const posts = postsList.reverse()
     const commentsObj = useSelector(state => state.comment)
     const comments = Object.values(commentsObj)
     const user_id = useSelector(state => state.session.user?.id)
 
-    console.log(posts)
-    console.log('comments:', comments)
 
     const [comment, setComment] = useState('')
     const [viewPost, setViewPost] = useState(false)
