@@ -25,7 +25,13 @@ def follow_user(user_id, follow_id):
     follow_this = User.query.get(follow_id)
     print('YESESEREFSESR', follow_this.to_dict())
 
-    user.follow(follow_this)
-    # follow_this.followers.append(user.to_dict())
+    for new_user in follow_this.following:
+        if new_user.id == user.id:
+            follow_this.following.remove(user)
+            db.session.commit()
+            return follow_this.to_dict()
+
+    # user.follow(follow_this)
+    follow_this.following.append(user)
     db.session.commit()
     return follow_this.to_dict()
