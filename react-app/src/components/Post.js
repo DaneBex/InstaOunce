@@ -129,7 +129,7 @@ const Post = ({ post }) => {
             />
           </div>
           <div className="comment-div">
-            <FontAwesomeIcon className="comment-icon" icon={faComment} />
+            <FontAwesomeIcon className="comment-icon" icon={faComment} onClick={closePost} />
           </div>
           <div className="send-div">
             <FontAwesomeIcon className="send-icon" icon={faPaperPlane} />
