@@ -12,6 +12,8 @@ import ViewPostModal from "../ViewPostModal";
 
 import "./User.css";
 import { followUser, populateUsers } from "../../store/user";
+import ViewFollowModal from "../ViewFollowerModal";
+import ViewFollowingModal from "../ViewFollowingModal";
 
 function User() {
   const dispatch = useDispatch();
@@ -26,6 +28,9 @@ function User() {
   let following;
 
   console.log('UserId:',userId,'User_id:', user_id)
+
+  const [viewFollowers, setViewFollowers] = useState(false)
+  const [viewFollowing, setViewFollowing] = useState(false)
 
   console.log(users)
 
@@ -70,6 +75,16 @@ function User() {
     return null;
   }
 
+  const closeViewFollowers = () => {
+    if (viewFollowers) setViewFollowers(false)
+    else setViewFollowers(true)
+  }
+
+  const closeViewFollowing = () => {
+    if (viewFollowing) setViewFollowing(false)
+    else setViewFollowing(true)
+  }
+
   const makeFollow = () => {
     console.log('yes')
     dispatch(followUser(user_id, userId))
@@ -87,7 +102,8 @@ if (user.followers) {
   isFollowing = user.followers.find(user => user.id === user_id)
 }
 
-console.log(isFollowing)
+let viewFollowersmodal = <ViewFollowModal user={user} />
+let viewFollowingmodal = <ViewFollowingModal user={user} />
 
 
 
@@ -115,14 +131,16 @@ console.log(isFollowing)
           </div>
           <div className="user-profile-stats">
             <div>
-              <strong>{user.followers?.length}</strong> posts
+              <strong>{user.posts?.length}</strong> posts
             </div>
-            <div>
-              <strong>{user.followers?.length}</strong> followers
+            <div className="user-prof-followers-button" onClick={closeViewFollowers}>
+              <strong >{user.followers?.length}</strong> followers
             </div>
+            {viewFollowers && viewFollowersmodal}
             <div>
               <strong>{following}</strong> following
             </div>
+            {viewFollowing && viewFollowingmodal}
           </div>
         </div>
       </div>

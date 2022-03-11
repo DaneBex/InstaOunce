@@ -79,9 +79,6 @@ function ViewPost({ post }) {
                     <div className='comment-div'>
                         <FontAwesomeIcon className='comment-icon' icon={faComment} />
                     </div>
-                    <div className='send-div'>
-                        <FontAwesomeIcon className='send-icon' icon={faPaperPlane} />
-                    </div>
                 </div>
                 <div className='likes-individual'>
                     <p className='liked-by-names'>{post.likes} likes</p>
