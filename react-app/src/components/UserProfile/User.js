@@ -27,6 +27,9 @@ function User() {
     dispatch(postActions.userPosts(userId));
   }, [dispatch]);
 
+  console.log(user)
+  console.log(user_id)
+
   useEffect(() => {
     if (!userId) {
       return;

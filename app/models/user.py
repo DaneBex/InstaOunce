@@ -57,6 +57,6 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'profile_pic': self.profile_pic,
-            'followers': [follower for follower in self.followers],
+            'followers': [follower.to_dict() for follower in self.following],
             'likes': [like.to_dict() for like in self.likes]
         }
