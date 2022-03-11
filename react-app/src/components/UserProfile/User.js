@@ -11,17 +11,42 @@ import { useDispatch, useSelector } from "react-redux";
 import ViewPostModal from "../ViewPostModal";
 
 import "./User.css";
-import { followUser } from "../../store/user";
+import { followUser, populateUsers } from "../../store/user";
 
 function User() {
   const dispatch = useDispatch();
   const userPosts = useSelector((state) => state.post.posts);
+  const usersObj = useSelector(state => state.user)
+  const users = Object.values(usersObj)
   const user_id = useSelector(state => state.session.user?.id)
+  const mainUser = useSelector(state => state.session.user)
   const [user, setUser] = useState({});
   const { userId } = useParams();
+  let isFollowing = false
+  let following;
+
   console.log('UserId:',userId,'User_id:', user_id)
 
+  console.log(users)
+
+  if (users) {
+    let num = 0
+    users.forEach(user => {
+      if (user.followers) {
+        user.followers.forEach(innerUser => {
+          if (innerUser.id === parseInt(userId)) num++
+        })
+      }
+    })
+    following = num;
+  }
+
+  useEffect(() => {
+    dispatch(populateUsers())
+  }, [])
+
   const [viewPost, setViewPost] = useState(false)
+  // const [isFollowing, setIsFollowing] = useState(false)
 
   useEffect(() => {
     dispatch(postActions.userPosts(userId));
@@ -48,12 +73,23 @@ function User() {
   const makeFollow = () => {
     console.log('yes')
     dispatch(followUser(user_id, userId))
+    dispatch(populateUsers())
+    window.location.reload(false);
   }
 
   const closePost = () => {
     if (viewPost) setViewPost(false);
     else setViewPost(true);
   };
+console.log(user.followers)
+
+if (user.followers) {
+  isFollowing = user.followers.find(user => user.id === user_id)
+}
+
+console.log(isFollowing)
+
+
 
 
   return (
@@ -70,8 +106,11 @@ function User() {
                 <button className="user-profile-edit-btn">Edit</button>
               </NavLink>
             }
-            {user_id !== parseInt(userId) &&
-            <button onClick={makeFollow} className="user-profile-edit-btn">Follow</button>
+            {user_id !== parseInt(userId) && isFollowing &&
+            <button onClick={makeFollow} className="user-profile-edit-btn-unfollow">Unfollow</button>
+            }
+            {user_id !== parseInt(userId) && !isFollowing &&
+            <button onClick={makeFollow} className="user-profile-edit-btn">follow</button>
             }
           </div>
           <div className="user-profile-stats">
@@ -79,10 +118,10 @@ function User() {
               <strong>{user.followers?.length}</strong> posts
             </div>
             <div>
-              <strong>{user.followers?.length}</strong> follows
+              <strong>{user.followers?.length}</strong> followers
             </div>
             <div>
-              <strong>{user.followers?.length}</strong> following
+              <strong>{following}</strong> following
             </div>
           </div>
         </div>
