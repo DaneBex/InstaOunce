@@ -49,6 +49,7 @@ const LoginForm = () => {
       <div className='login-signup-article'>
         <div className='is-image-login'>
           <img className='login-pic' src='https://www.instagram.com/static/images/homepage/home-phones.png/43cc71bb1b43.png' />
+          <img className='inside-pic' src='https://www.trendmut.com/wp-content/uploads/2018/02/instagram-notifies-about-screenshots.jpg' />
         </div>
         <div className='col'>
           <div className='not-image-login'>

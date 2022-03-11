@@ -157,7 +157,15 @@
 }
 
 .is-image-login {
+  position: relative;
   width: 450px;
+}
+.inside-pic{
+  position: absolute;
+  top: 96px;
+  left: 149px;
+  height: 434px;
+  width: 244px;
 }
 
 .login-pic {
