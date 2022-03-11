@@ -5,6 +5,7 @@ const REMOVE_POST = "post/REMOVE_POST";
 const UPDATE_POST = "post/UPDATE_POST";
 const LOAD_POST = "post/LOAD_POST";
 const USER_POSTS = "post/USER_POSTS";
+const GET_POST = "post/GET_POST"
 
 const getUserPosts = (posts) => {
   return {
@@ -24,6 +25,13 @@ const loadPost = (posts) => {
   return {
     type: LOAD_POST,
     payload: posts,
+  };
+};
+
+const getPost = (post) => {
+  return {
+    type: GET_POST,
+    post
   };
 };
 
@@ -83,6 +91,18 @@ export const editPost = (id, formInfo) => async dispatch => {
   if (response.ok) {
     const data = await response.json()
     dispatch(addPost(data))
+  }
+}
+
+export const getSinglePost = (id) => async (dispatch) => {
+  const response = await fetch(`/api/posts/${id}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify()
+  });
+  if(response.ok){
+    const post = await response.json();
+    dispatch(getPost(post))
   }
 }
 

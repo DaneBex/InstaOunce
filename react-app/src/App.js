@@ -11,6 +11,7 @@ import User from "./components/UserProfile/User";
 import { authenticate } from "./store/session";
 import ReactDOM from "react-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import SinglePost from "./components/SinglePost";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,10 +37,10 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-
-
-        <ProtectedRoute path='/users' exact={true} >
-
+        <Route path="/posts/:postId" exact={true}>
+          <SinglePost />
+        </Route>
+        <ProtectedRoute path='/users' exact={true}>
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
