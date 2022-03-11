@@ -11,37 +11,117 @@ import { populatePosts } from "../store/post";
 import CommentOptionModal from "./CommentOptionModal";
 import LargeCommentOption from "./Comment-Large";
 import ViewPostModal from "./ViewPostModal";
-
+import { viewSinglePost } from "../store/post";
 
 const SinglePost = () => {
     const dispatch = useDispatch();
     const { postId } = useParams();
-
+    const [comment, setComment] = useState('');
+    const [commentOptions, setCommentOptions] = useState(false);
     const userId = useSelector(state => state.session.user?.id);
     const userPostsObj = useSelector((state) => state.post);
-    const posts = Object.values(userPostsObj)
-    console.log(posts)
-    // const postObj = useSelector((state) => state.post[postId]);
+    const usersPosts = useSelector(state => state.post)
+    // const posts = Object.values(userPostsObj)
+    console.log('THE POSTS: ', usersPosts)
+    const postObj = useSelector((state) => state.post[postId]);
 
-    const userPosts = posts.filter(post => postObj.user_id === postId)
-
-    // console.log('SINGLE POST:', postObj)
-    const [comment, setComment] = useState('')
-    const [commentOptions, setCommentOptions] = useState(false)
+    if (postObj) console.log('INDIVIDUAL POST ', postObj?.user_id)
+    const userPosts = useSelector(state => state.post.posts)
     const [viewPost, setViewPost] = useState(false)
 
     useEffect(() => {
-        dispatch(postActions.populatePosts());
-        dispatch(postActions.userPosts(userId));
+        dispatch(populatePosts());
+        dispatch(viewSinglePost(userId));
+        // dispatch()
       }, [dispatch]);
+
+    // useEffect(() => {
+    //     // dispatch(populatePosts(postId));
+    //     dispatch(postActions.userPosts(userId));
+    // }, [dispatch]);
 
     const closePost = () => {
         if (viewPost) setViewPost(false);
         else setViewPost(true);
     };
 
+    //====================
+
+    const makeCommentHandler = () => {
+
+        if (comment) {
+
+            let vals = {
+                user_id: userId,
+                post_id: postObj.id,
+                comment
+            }
+            dispatch(makeComment(vals))
+            dispatch(populatePosts())
+            setComment('')
+        }
+    }
+
+    const removeComment = id => {
+        dispatch(deleteComment(id))
+        dispatch(populatePosts())
+    }
+
+    const closeCommentOptions = () => {
+        if (commentOptions) setCommentOptions(false)
+        else setCommentOptions(true)
+    }
+
+    let viewCommentOptions = <CommentOptionModal post={postObj} />
+
     return (
         <>
+        <div className='individual-post'>
+            <img className='individual-post-image' src={postObj?.imageUrl} />
+            <div className='post-description-individual'>
+                <div className='header-post-individual'>
+                    <div className='image-prof-details-individual'>
+                        <img className='prof-pic-post' src={postObj?.user_prof_pic} />
+                        <h2>{postObj?.user_prof_username}</h2>
+                    </div>
+                    <FontAwesomeIcon className='three-dots' icon={faEllipsis} />
+                </div>
+                <ul className="comment-list">
+                    <li >
+                        <div className="individual-li">
+                            <img className='prof-pic-post' src={postObj?.user_prof_pic} />
+                            <p className='postbox-caption-username-individual'>{postObj?.user_prof_username}</p>
+                            <p>{postObj?.caption}</p>
+                        </div>
+                    </li>
+                    {postObj?.comments && postObj?.comments.map(comment => (
+                        <LargeCommentOption post={postObj} comment={comment} />
+                    ))}
+                </ul>
+                <div className='post-icons-individual'>
+                    <div className='heart-div'>
+                        <FontAwesomeIcon className='heart-icon' icon={faHeart} />
+                    </div>
+                    <div className='comment-div'>
+                        <FontAwesomeIcon className='comment-icon' icon={faComment} />
+                    </div>
+                    <div className='send-div'>
+                        <FontAwesomeIcon className='send-icon' icon={faPaperPlane} />
+                    </div>
+                </div>
+                <div className='likes-individual'>
+                    <p className='liked-by-names'>{postObj?.likes} likes</p>
+                </div>
+                <div className='add-comment-box-individual'>
+                <div className='smile-div'>
+                    <FontAwesomeIcon className='smileface-icon' icon={faFaceSmile} />
+                </div>
+                <textarea value={comment} onChange={(e) => setComment(e.target.value)} className='enter-comment-box-individual' placeholder='Add a comment...' />
+                <button className='post-comment-button' onClick={makeCommentHandler}>Post</button>
+            </div>
+            </div>
+        </div>
+//==============
         <div className="user-profile-post-container">
         <p id="user-profile-post-header">
           <FontAwesomeIcon id="user-profile-post-icon" icon={faClipboard} />{" "}

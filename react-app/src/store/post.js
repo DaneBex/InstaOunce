@@ -4,6 +4,7 @@ const UPDATE_POST = "post/UPDATE_POST";
 const LOAD_POST = "post/LOAD_POST";
 const USER_POSTS = "post/USER_POSTS";
 const GET_POST = "post/GET_POST"
+const LIST_POSTS = "post/LIST_POSTS"
 
 const getUserPosts = (posts) => {
   return {
@@ -40,6 +41,13 @@ const removePost = (id) => {
   };
 };
 
+const getUserPostsSP = (posts) => {
+  return {
+    type: LIST_POSTS,
+    posts
+  }
+}
+
 export const populatePosts = () => async (dispatch) => {
   const response = await fetch("/api/posts/");
   if (response.ok) {
@@ -67,6 +75,14 @@ export const userPosts = (id) => async (dispatch) => {
     dispatch(getUserPosts(posts));
   }
 };
+
+export const viewSinglePost = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/posts/users/${userId}`);
+  if (response.ok) {
+    const posts = await response.json();
+    dispatch(getUserPostsSP(posts));
+  }
+}
 
 export const deletePost = (id) => async dispatch => {
   const response = await fetch(`/api/posts/${id}`, {
@@ -121,6 +137,11 @@ const postReducer = (state = initialState, action) => {
     case USER_POSTS:
       newState = { ...action.posts };
       return newState;
+    case LIST_POSTS:
+      newState = { ...state }
+      const list = []
+      action.posts.posts.forEach(post => list.push(post))
+      return newState["list"] = list;
     case REMOVE_POST:
       newState = { ...state }
       delete newState[action.id]
