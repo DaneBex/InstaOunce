@@ -14,35 +14,35 @@ import ViewPostModal from "./ViewPostModal";
 
 
 const SinglePost = () => {
-    const dispatch = useDispatch();
-    const { postId } = useParams();
+  const dispatch = useDispatch();
+  const { postId } = useParams();
 
-    const userId = useSelector(state => state.session.user?.id);
-    const userPostsObj = useSelector((state) => state.post);
-    const posts = Object.values(userPostsObj)
-    console.log(posts)
-    // const postObj = useSelector((state) => state.post[postId]);
+  const userId = useSelector(state => state.session.user?.id);
+  const userPostsObj = useSelector((state) => state.post);
+  const posts = Object.values(userPostsObj)
+  console.log(posts)
+  const postObj = useSelector((state) => state.post[postId]);
 
-    const userPosts = posts.filter(post => postObj.user_id === postId)
+  const userPosts = posts.filter(post => postObj.user_id === postId)
 
-    // console.log('SINGLE POST:', postObj)
-    const [comment, setComment] = useState('')
-    const [commentOptions, setCommentOptions] = useState(false)
-    const [viewPost, setViewPost] = useState(false)
+  // console.log('SINGLE POST:', postObj)
+  const [comment, setComment] = useState('')
+  const [commentOptions, setCommentOptions] = useState(false)
+  const [viewPost, setViewPost] = useState(false)
 
-    useEffect(() => {
-        dispatch(postActions.populatePosts());
-        dispatch(postActions.userPosts(userId));
-      }, [dispatch]);
+  useEffect(() => {
+    dispatch(postActions.populatePosts());
+    dispatch(postActions.userPosts(userId));
+  }, [dispatch]);
 
-    const closePost = () => {
-        if (viewPost) setViewPost(false);
-        else setViewPost(true);
-    };
+  const closePost = () => {
+    if (viewPost) setViewPost(false);
+    else setViewPost(true);
+  };
 
-    return (
-        <>
-        <div className="user-profile-post-container">
+  return (
+    <>
+      <div className="user-profile-post-container">
         <p id="user-profile-post-header">
           <FontAwesomeIcon id="user-profile-post-icon" icon={faClipboard} />{" "}
           Posts
@@ -72,8 +72,8 @@ const SinglePost = () => {
           ))}
         </div>
       </div>
-        </>
-    )
+    </>
+  )
 }
 
 export default SinglePost;
