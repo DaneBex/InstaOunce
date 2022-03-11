@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import ViewPost from "./ViewPost";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusMinus } from "@fortawesome/free-solid-svg-icons";
 
-function ViewPostModal({post}) {
+function ViewPostModal({user_post_id, post}) {
   const [showModal, setShowModal] = useState(true);
 
   return (
     <>
       {showModal && (
         <Modal closeOn={'close-two'} x={'x-out-two'} id={'modal-content'} onClose={() => setShowModal(false)}>
-          <ViewPost post={post} />
+          <ViewPost user_post_id={user_post_id}  post={post} />
         </Modal>
       )}
     </>

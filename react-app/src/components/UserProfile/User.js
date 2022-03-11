@@ -118,7 +118,7 @@ let viewFollowingmodal = <ViewFollowingModal user={user} />
           <div className="user-profile-header-container">
             <p className="user-profile-header">{user.username}</p>
             {user_id === parseInt(userId) &&
-              <NavLink to={"/"}>
+              <NavLink to={`/users/${user_id}/edit`}>
                 <button className="user-profile-edit-btn">Edit</button>
               </NavLink>
             }
@@ -151,7 +151,7 @@ let viewFollowingmodal = <ViewFollowingModal user={user} />
         </p>
         <div className="user-profile-posts-container">
           {userPosts?.map((post) => (
-            <div key={post.id} onDoubleClick={closePost} className="user-profile-post-card">
+            <div key={post.id} onClick={closePost} className="user-profile-post-card">
               <div className="user-profile-post-info">
                 <p>
                   <FontAwesomeIcon
@@ -169,7 +169,7 @@ let viewFollowingmodal = <ViewFollowingModal user={user} />
                 </p>
               </div>
               <img className="user-profile-post-img" src={post.imageUrl} />
-              {viewPost && <ViewPostModal post={post} />}
+              {viewPost && <ViewPostModal user_post_id={userId} post={post} />}
             </div>
           ))}
         </div>

@@ -11,7 +11,7 @@ import { populatePosts } from '../../store/post'
 import CommentOptionModal from "../CommentOptionModal";
 import LargeCommentOption from "../Comment-Large";
 
-function ViewPost({ post }) {
+function ViewPost({ user_post_id, post }) {
     const dispatch = useDispatch()
     const user_id = useSelector(state => state.session.user?.id)
     const [comment, setComment] = useState('')
@@ -32,7 +32,13 @@ function ViewPost({ post }) {
                 comment
             }
             dispatch(makeComment(vals))
-            dispatch(populatePosts())
+            
+            if(user_post_id){
+                dispatch(postActions.userPosts(user_post_id))
+            }else{
+                dispatch(populatePosts())
+                
+            }
             setComment('')
         }
     }
