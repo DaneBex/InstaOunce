@@ -166,6 +166,7 @@
   left: 149px;
   height: 434px;
   width: 244px;
+  transition-timing-function: ease-in;
 }
 
 .login-pic {
