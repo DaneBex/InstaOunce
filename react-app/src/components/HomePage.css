@@ -192,13 +192,32 @@
   object-fit: cover;
 }
 
+.followers-header {
+  border-bottom: 1px solid rgba(116, 114, 114, 0.5);
+}
+
+.user-prof-followers-button {
+  cursor: pointer;
+}
+
+.followers-header {
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
 .owner-post-options {
   display: flex;
   width: 100%;
   border-top: 1px solid rgba(116, 114, 114, 0.5);
 }
 
-
+.followers-list-followers-list {
+  overflow-y: scroll;
+  padding: 0;
+}
 
 .update-post-user{
     border: none;
@@ -207,6 +226,21 @@
     cursor: pointer;
     font-weight: 700;
     width: 50%;
+}
+
+.follower-box {
+  display: flex;
+  padding: 8px 16px;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.follower-list-prof-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 
 .update-post-user:hover {
@@ -235,6 +269,7 @@
   height: auto;
   padding: 0 16px;
   padding-bottom: 5px;
+
 }
 
 .delete-icon-dots {
@@ -283,6 +318,8 @@
 .postbox-caption-username {
   font-size: 14px;
   font-weight: 800;
+  text-decoration: none;
+  color: black;
 }
 
 .postbox-caption-username-individual {

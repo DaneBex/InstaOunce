@@ -4,6 +4,7 @@ import { useState } from "react";
 import { faEllipsis, faBan } from '@fortawesome/free-solid-svg-icons'
 import CommentOptionModal from "./CommentOptionModal";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const Comment = ({ post, comment }) => {
     const user_id = useSelector(state => state.session.user?.id)
@@ -21,7 +22,7 @@ const Comment = ({ post, comment }) => {
 
     return (
         <div className='postbox-caption'>
-                            <p className='postbox-caption-username'>{comment.user_username}</p>
+                            <NavLink to={`/users/${comment.user_id}`} className='postbox-caption-username'>{comment.user_username}</NavLink>
                             <p>{comment.comment}</p>
                             {user_id === comment.user_id && <FontAwesomeIcon onClick={closeCommentOptions} className='delete-icon-dots' icon={faEllipsis} />}
                             {commentOptions && viewCommentOptions}

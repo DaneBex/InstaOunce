@@ -1,10 +1,9 @@
-import { csrfFetch } from "./csrf";
-
 const ADD_POST = "post/ADD_POST";
 const REMOVE_POST = "post/REMOVE_POST";
 const UPDATE_POST = "post/UPDATE_POST";
 const LOAD_POST = "post/LOAD_POST";
 const USER_POSTS = "post/USER_POSTS";
+const GET_POST = "post/GET_POST"
 
 const getUserPosts = (posts) => {
   return {
@@ -24,6 +23,13 @@ const loadPost = (posts) => {
   return {
     type: LOAD_POST,
     payload: posts,
+  };
+};
+
+const getPost = (post) => {
+  return {
+    type: GET_POST,
+    post
   };
 };
 
@@ -73,7 +79,6 @@ export const deletePost = (id) => async dispatch => {
 }
 
 export const editPost = (id, formInfo) => async dispatch => {
-  console.log(formInfo)
   const response = await fetch(`/api/posts/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -83,6 +88,18 @@ export const editPost = (id, formInfo) => async dispatch => {
   if (response.ok) {
     const data = await response.json()
     dispatch(addPost(data))
+  }
+}
+
+export const getSinglePost = (id) => async (dispatch) => {
+  const response = await fetch(`/api/posts/${id}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify()
+  });
+  if(response.ok){
+    const post = await response.json();
+    dispatch(addPost(post))
   }
 }
 
@@ -96,6 +113,7 @@ const postReducer = (state = initialState, action) => {
       action.payload.posts.forEach((post) => {
         newState[post.id] = post;
       });
+      // console.log('this is the newState', newState);
       return newState;
     case ADD_POST:
       newState = { ...state, [action.post.id]: { ...action.post } };
