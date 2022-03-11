@@ -12,7 +12,8 @@ const loadUser = users => {
 }
 
 export const populateUsers = () => async dispatch => {
-    const response = await csrfFetch('/api/users')
+    console.log('happening')
+    const response = await csrfFetch('/api/users/')
 
     if (response.ok) {
         const users = await response.json()
