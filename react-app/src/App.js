@@ -11,6 +11,7 @@ import User from "./components/UserProfile/User";
 import { authenticate } from "./store/session";
 import ReactDOM from "react-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import UserEdit from "./components/UserEdit/UserEdit";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -26,9 +27,10 @@ function App() {
   if (!loaded) {
     return null;
   }
-
+  
   return (
     <BrowserRouter>
+    <NavBar />
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
@@ -43,8 +45,10 @@ function App() {
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
-          <NavBar />
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path="/users/:userId/edit" exact={true}>
+          <UserEdit />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <HomePage />
