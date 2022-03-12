@@ -16,6 +16,7 @@ import './SinglePost.css'
 
 
 const SinglePost = () => {
+
     const dispatch = useDispatch();
     const { postId } = useParams();
     const [comment, setComment] = useState('');
@@ -34,10 +35,10 @@ const SinglePost = () => {
         dispatch(viewSinglePost(userId));
       }, [dispatch]);
 
-    const closePost = () => {
-        if (viewPost) setViewPost(false);
-        else setViewPost(true);
-    };
+  const closePost = () => {
+    if (viewPost) setViewPost(false);
+    else setViewPost(true);
+  };
 
     //====================
 
@@ -120,6 +121,7 @@ const SinglePost = () => {
 {/* =============================================== */}
 
         {/* <div className="user-profile-post-container">
+
         <p id="user-profile-post-header">
           <FontAwesomeIcon id="user-profile-post-icon" icon={faClipboard} />{" "}
           Posts
@@ -148,9 +150,11 @@ const SinglePost = () => {
             </div>
           ))}
         </div>
+
       </div> */}
         </>
     )
+
 }
 
 export default SinglePost;

@@ -13,6 +13,7 @@
 .all-buttons {
   height: 100%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -35,7 +36,6 @@
   color: black;
   background-color: white;
   height: 50%;
-  border-top: 1px solid rgb(219, 219, 219);
 }
 
 .viewpost-navlink:hover {
@@ -91,6 +91,14 @@
   width: 400px;
   height: 100px;
   z-index: 50;
+}
+
+#modal-content-five {
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  z-index: 3;
+  border-radius: 12px;
 }
 
 #x-out {

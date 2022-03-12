@@ -131,9 +131,6 @@ const Post = ({ post }) => {
           <div className="comment-div">
             <FontAwesomeIcon className="comment-icon" icon={faComment} onClick={closePost} />
           </div>
-          <div className="send-div">
-            <FontAwesomeIcon className="send-icon" icon={faPaperPlane} />
-          </div>
         </div>
         <div className="likes">
           <p className="liked-by-names">{post.likes} likes</p>

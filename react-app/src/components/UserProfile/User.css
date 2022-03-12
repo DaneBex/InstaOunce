@@ -54,9 +54,25 @@
   cursor: pointer;
 }
 
+.user-profile-edit-btn-unfollow {
+  border: 2px solid rgb(247, 180, 157);
+  background-color: rgb(250, 250, 250);
+  color: rgb(247, 180, 157);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 .user-profile-edit-btn:hover {
   border: 2px solid rgb(21, 157, 247);
   background-color: rgb(21, 157, 247);
+  color: rgb(250, 250, 250);
+}
+
+.user-profile-edit-btn-unfollow:hover {
+  border: 2px solid rgb(247, 180, 157);
+  background-color: rgb(247, 180, 157);
   color: rgb(250, 250, 250);
 }
 
@@ -82,7 +98,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 21px;
 }
 

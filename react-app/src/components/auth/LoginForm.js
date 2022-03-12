@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
@@ -13,6 +13,25 @@ const LoginForm = () => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   let loginButton;
+  const imgvar = ['https://www.trendmut.com/wp-content/uploads/2018/02/instagram-notifies-about-screenshots.jpg',
+    'https://img.utdstc.com/screen/d62/dad/d62dad32a4f59acc828c8c08c782e56d15cdeb391fb79ffca662e2ef6cb39f5a:800',
+    'https://pbs.twimg.com/media/EDqG4czWkAAfY2W?format=jpg&name=large',
+    'https://preview.redd.it/qc3vrsu6w5j21.jpg?auto=webp&s=d64180ea77152d18ef74fe4661c5439aa5868837']
+  //let count = 1;
+  const [myCount, setCount] = useState(0)
+  let img_display = imgvar[myCount]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (myCount === 3) {
+        setCount(0)
+      }
+      else {
+        setCount(myCount + 1)
+      }
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [myCount]);
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -49,6 +68,8 @@ const LoginForm = () => {
       <div className='login-signup-article'>
         <div className='is-image-login'>
           <img className='login-pic' src='https://www.instagram.com/static/images/homepage/home-phones.png/43cc71bb1b43.png' />
+          <img className='inside-pic' src={img_display} />
+
         </div>
         <div className='col'>
           <div className='not-image-login'>
