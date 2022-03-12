@@ -1,4 +1,4 @@
-.individual-post {
+.individual-post-sp {
     display: flex;
     height: 60%;
     width: 60%;
@@ -6,7 +6,7 @@
     border: 1px solid lightgray;
 }
 
-.individual-post-image {
+.individual-post-image-sp {
     width: 60%;
     object-fit: cover;
     border-right: 1px solid lightgray;

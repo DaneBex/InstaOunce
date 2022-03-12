@@ -71,8 +71,8 @@ const SinglePost = () => {
 
   return (
     <>
-      <div className='individual-post'>
-        <img className='individual-post-image' src={postObj?.imageUrl} />
+      <div className='individual-post-sp'>
+        <img className='individual-post-image-sp' src={postObj?.imageUrl} />
         <div className='post-description-individual'>
           <div className='header-post-individual'>
             <div className='image-prof-details-individual'>

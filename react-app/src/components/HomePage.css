@@ -192,6 +192,7 @@
 .individual-post-image {
   width: 60%;
   object-fit: cover;
+  border-right: 1px solid lightgray;
 }
 
 .followers-header {
