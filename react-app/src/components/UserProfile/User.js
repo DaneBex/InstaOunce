@@ -151,25 +151,27 @@ let viewFollowingmodal = <ViewFollowingModal user={user} />
         </p>
         <div className="user-profile-posts-container">
           {userPosts?.map((post) => (
-            <div key={post.id} onClick={closePost} className="user-profile-post-card">
-              <div className="user-profile-post-info">
-                <p>
-                  <FontAwesomeIcon
-                    className="user-profile-post-info-content"
-                    icon={faHeart}
-                  />{" "}
-                  {post.likes}
-                </p>
-                <p>
-                  <FontAwesomeIcon
-                    className="user-profile-post-info-content"
-                    icon={faComment}
-                  />{" "}
-                  {post.comments?.length}
-                </p>
+            <div key={post.id} className="user-profile-post-card">
+              <NavLink to={`/posts/${post.id}`}>
+                <div className="user-profile-post-info">
+                  <p>
+                    <FontAwesomeIcon
+                      className="user-profile-post-info-content"
+                      icon={faHeart}
+                    />{" "}
+                    {post.likes}
+                  </p>
+                  <p>
+                    <FontAwesomeIcon
+                      className="user-profile-post-info-content"
+                      icon={faComment}
+                    />{" "}
+                    {post.comments?.length}
+                  </p>
               </div>
+              </NavLink>
               <img className="user-profile-post-img" src={post.imageUrl} />
-              {viewPost && <ViewPostModal user_post_id={userId} post={post} />}
+              {/* {viewPost && <ViewPostModal user_post_id={userId} post={post} />} */}
             </div>
           ))}
         </div>

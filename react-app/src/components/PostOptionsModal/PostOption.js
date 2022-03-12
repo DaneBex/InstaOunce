@@ -52,7 +52,7 @@ const PostOption = ({ post }) => {
 
     console.log(users)
 
-    if (user.followers) {
+    if (user) {
         isFollowing = user.followers.find(user => user.id === user_id)
       }
 
