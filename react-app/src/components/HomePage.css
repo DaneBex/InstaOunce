@@ -229,6 +229,7 @@
     cursor: pointer;
     font-weight: 700;
     width: 50%;
+    padding-top: 8px;
 }
 
 .follower-box {
@@ -257,6 +258,7 @@
   cursor: pointer;
   background-color: white;
   width: 50%;
+  padding-top: 8px;
 }
 
 .delete-post-button:hover {
