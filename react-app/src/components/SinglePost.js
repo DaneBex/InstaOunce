@@ -12,6 +12,8 @@ import CommentOptionModal from "./CommentOptionModal";
 import LargeCommentOption from "./Comment-Large";
 import ViewPostModal from "./ViewPostModal";
 import { viewSinglePost } from "../store/post";
+import './SinglePost.css'
+
 
 const SinglePost = () => {
     const dispatch = useDispatch();
@@ -21,8 +23,6 @@ const SinglePost = () => {
     const userId = useSelector(state => state.session.user?.id);
     const userPostsObj = useSelector((state) => state.post);
     const usersPosts = useSelector(state => state.post)
-    // const posts = Object.values(userPostsObj)
-    console.log('THE POSTS: ', usersPosts)
     const postObj = useSelector((state) => state.post[postId]);
 
     if (postObj) console.log('INDIVIDUAL POST ', postObj?.user_id)
@@ -32,13 +32,7 @@ const SinglePost = () => {
     useEffect(() => {
         dispatch(populatePosts());
         dispatch(viewSinglePost(userId));
-        // dispatch()
       }, [dispatch]);
-
-    // useEffect(() => {
-    //     // dispatch(populatePosts(postId));
-    //     dispatch(postActions.userPosts(userId));
-    // }, [dispatch]);
 
     const closePost = () => {
         if (viewPost) setViewPost(false);
@@ -120,9 +114,12 @@ const SinglePost = () => {
                 <button className='post-comment-button' onClick={makeCommentHandler}>Post</button>
             </div>
             </div>
+
         </div>
-//==============
-        <div className="user-profile-post-container">
+
+{/* =============================================== */}
+
+        {/* <div className="user-profile-post-container">
         <p id="user-profile-post-header">
           <FontAwesomeIcon id="user-profile-post-icon" icon={faClipboard} />{" "}
           Posts
@@ -151,7 +148,7 @@ const SinglePost = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
         </>
     )
 }
