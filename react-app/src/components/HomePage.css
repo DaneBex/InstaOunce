@@ -38,12 +38,14 @@
 }
 
 .individual-li {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 5px;
   margin: -5px -2px 0 0;
   padding: 12px 0 16px;
+  width: 100%;
 }
 
 .three-dots {
@@ -273,9 +275,12 @@
 }
 
 .delete-icon-dots {
-  position: absolute;
-  right: 20px;
   cursor: pointer;
+  background-color: blue;
+}
+.delete-icon-dots-post {
+  cursor: pointer;
+  background-color: blue;
 }
 
 .comment-option-buttons {
