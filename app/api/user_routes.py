@@ -27,6 +27,7 @@ def follow_user(user_id, follow_id):
 
     for new_user in follow_this.following:
         if new_user.id == user.id:
+            follow_this.following.remove(user)
             db.session.commit()
             return follow_this.to_dict()
 
