@@ -51,14 +51,15 @@ const PostOption = ({ post }) => {
     let editPost = <EditPostModal post={post} />
 
     console.log(users)
-
-    if (user.followers) {
-        isFollowing = user.followers.find(user => user.id === user_id)
-      }
+    if (user) {
+        if (user.followers) {
+            isFollowing = user.followers.find(user => user.id === user_id)
+          }
+    }
 
     return (
         <div className="all-buttons">
-           
+
             <NavLink to={`/posts/${post.id}`} className="viewpost-navlink">Go to post</NavLink>
             {user_id === post.user_id &&
             <div className="owner-post-options">
