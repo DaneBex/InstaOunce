@@ -31,7 +31,7 @@ function PostForm() {
         if (res.ok) {
             s3Url = await res.json();
             setImageLoading(false);
-            history.push("/posts");
+            history.push(`/`);
         }
         else {
             setImageLoading(false);
