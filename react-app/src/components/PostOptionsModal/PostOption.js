@@ -51,11 +51,13 @@ const PostOption = ({ post }) => {
     let editPost = <EditPostModal post={post} />
 
     console.log(users)
+
     if (user) {
         if (user.followers) {
             isFollowing = user.followers.find(user => user.id === user_id)
           }
     }
+
 
     return (
         <div className="all-buttons">
