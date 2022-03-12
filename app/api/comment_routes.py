@@ -21,7 +21,6 @@ def create_comment():
 
         db.session.add(new_comment)
         db.session.commit()
-
         return new_comment.to_dict()
 
 @comment_routes.route('/<int:id>', methods=["DELETE"])
@@ -33,15 +32,9 @@ def delete_comment(id):
 
 @comment_routes.route('/<int:id>', methods=["PUT"])
 def update_comment(id):
-    print('HITTING!!!!!!!!!!', request.json)
-    # form = CommentForm()
-    # form["csrf_token"].data = request.cookies["csrf_token"]
-    # if form.validate_on_submit():
     one_comment = Comment.query.get(id)
     print('ONE_COMMENT ------ \n -------', one_comment)
     one_comment.comment = request.json
     db.session.add(one_comment)
     db.session.commit()
     return one_comment.to_dict()
-    # else:
-    #     print('ERRRROOOORRRRSSS', form.errors)
