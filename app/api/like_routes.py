@@ -1,6 +1,5 @@
-from crypt import methods
 from flask import Blueprint
-from app.models import Like, Post, db
+from app.models import Like, db
 
 like_routes = Blueprint('likes', __name__)
 
@@ -24,6 +23,4 @@ def addLike(post_id, user_id):
     new_like = Like(post_id=post_id, user_id=user_id)
     db.session.add(new_like)
     db.session.commit()
-
-
     return {"post": [ like.to_dict() for like in likes_post]}

@@ -30,7 +30,6 @@ def follow_user(user_id, follow_id):
             db.session.commit()
             return follow_this.to_dict()
 
-    # user.follow(follow_this)
     follow_this.following.append(user)
     db.session.commit()
     return {"user":follow_this.to_dict()}
@@ -40,8 +39,6 @@ def follow_user(user_id, follow_id):
 def edit_user(user_id):
     user = User.query.get(user_id)
     user.username = request.json
-    print('\n\n\n got user: ', user, '\n username: ', user.username, '\n\n')
     db.session.add(user)
     db.session.commit()
     return {"user": user.to_dict()}
-

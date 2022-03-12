@@ -1,10 +1,9 @@
-from crypt import methods
 from flask import Blueprint, request
 from app.models import Post, db
 from flask_login import current_user, login_required
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
-from app.forms.upload_form import UploadForm
+
 
 post_routes = Blueprint('posts', __name__)
 
@@ -12,7 +11,6 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/')
 def posts():
     posts = Post.query.all()
-    print('\n\n THESE ARE THE POSTS: \n\n', posts)
     return {"posts": [post.to_dict() for post in posts]}
 
 
@@ -70,12 +68,9 @@ def delete_image(id):
 @post_routes.route('/users/<int:id>')
 def getUserPosts(id):
     posts = Post.query.filter_by(user_id = id).all()
-    print("\n\n",posts,"\n\n")
     postToDict = []
     for post in posts:
         postToDict.append(post.to_dict())
-
-    print("\n\n",postToDict,"\n\n")
     return {"posts": postToDict}
 
 @post_routes.route('/<int:id>', methods=['DELETE'])
@@ -88,8 +83,6 @@ def delete_post(id):
 
 @post_routes.route('/<int:id>', methods=["PUT"])
 def update_post(id):
-    print('!!!!!!!!!!!!!\n!!!!!!!!!!!!')
-
     one_post = Post.query.get(id)
     one_post.caption = request.json
     db.session.add(one_post)
