@@ -1,0 +1,13 @@
+.individual-post {
+    display: flex;
+    height: 60%;
+    width: 60%;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+}
+
+.individual-post-image {
+    width: 60%;
+    object-fit: cover;
+    border-right: 1px solid lightgray;
+}
