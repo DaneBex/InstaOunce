@@ -12,6 +12,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [profilePic, setProfilePic] = useState('')
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   let signUpButton;
@@ -19,7 +20,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, profilePic));
       if (data) {
         setErrors(data)
       }
@@ -41,6 +42,10 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  const updateProfilePic = (e) => {
+    setProfilePic(e.target.value)
+  }
 
   if (username && email && password && repeatPassword) {
     signUpButton = <button className='signup-button' type='submit'>Sign up</button>
@@ -104,6 +109,16 @@ const SignUpForm = () => {
               name='repeat_password'
               onChange={updateRepeatPassword}
               value={repeatPassword}
+              required={true}
+            ></input>
+          </div>
+          <div className='input'>
+            <input
+              placeholder='Profile Picture Link'
+              type='text'
+              name='profile_pic'
+              onChange={updateProfilePic}
+              value={profilePic}
               required={true}
             ></input>
           </div>
