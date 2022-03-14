@@ -33,12 +33,12 @@ function ViewPost({ user_post_id, post }) {
                 comment
             }
             dispatch(makeComment(vals))
-            
+
             if(user_post_id){
                 dispatch(postActions.userPosts(user_post_id))
             }else{
                 dispatch(populatePosts())
-                
+
             }
             setComment('')
         }
@@ -79,7 +79,7 @@ function ViewPost({ user_post_id, post }) {
                         <img className='prof-pic-post' src={post.user_prof_pic} />
                         <h2>{post.user_prof_username}</h2>
                     </div>
-                    <FontAwesomeIcon className='three-dots' icon={faEllipsis} />
+                    {/* <FontAwesomeIcon className='three-dots' icon={faEllipsis} /> */}
                 </div>
                 <ul className="comment-list">
                     <li >
