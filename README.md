@@ -1,134 +1,51 @@
-# Flask React Project
+# InstaOunce
 
-This is the starter for the Flask React project.
+InstaOunce is our app, inspired by Instagram for uploading, viewing, sharing and commenting of photos. Users can share photos, like them, comment on them and become part of the InstaOunce community.
 
-## Getting started
+## Index
+- Live site: [InstaOunce](https://instaounce1.herokuapp.com)
 
-1. Clone this repository (only this branch)
+## Technologies Used
+ - Python
+ - Flask
+ - SQLAlchemy
+ - React/JS
+ - Redux
+ - Node
+ - Docker
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+## Getting Started
+1. Clone this repo: git@github.com/DaneBex/InstaOunce
+2. cd into the /app directory and install dependencies: pipenv install
+3. cd into the /react-app directory and install dependencies: npm install
+4. create .env file based on the .env.example file given
+5. Create user in psql based on .env DATABASE_URL app_name:
+ - `psql -c "CREATE USER <username> PASSWORD '<password>' CREATEDB"`
+6. Create a database in psql based on your .env DATABASE_URL app_db_name
+7. Start shell, migrate database, seed database and run flask app
+ - `pipenv shell`
+ - `flask db upgrade`
+ - `flask seed all`
+ - `flask run`
+8. Open another terminal and cd into /react-app and run the React app:
+ - `npm start`
 
-2. Install dependencies
+## Features
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+### Home/Login Page
+![Home/Login Page](https://user-images.githubusercontent.com/17211586/158196734-b2208e98-e655-4b25-8972-3b62bd932f2a.png)
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+### Post Feed
+![Post Feed](https://user-images.githubusercontent.com/17211586/158197278-c5b3edf4-33f6-4b31-bd9c-ae198467252c.png)
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+### Post Detail
+![Post Detail](https://user-images.githubusercontent.com/17211586/158197662-73cf7052-bef6-463a-aa32-974cdbe2c845.png)
 
-   ```bash
-   pipenv shell
-   ```
+### Comments, Likes, Follows
+![Add likes, comments, follows](https://user-images.githubusercontent.com/17211586/158198720-259e8170-9354-4a40-8209-f05b613c9d76.png)
 
-   ```bash
-   flask db upgrade
-   ```
+### Image Upload
+![Image Upload](https://user-images.githubusercontent.com/17211586/158197869-7dddbdab-80c6-4431-9fe0-92005dd557bc.png)
 
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-## Deploy to Heroku
-
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
-
-   ```bash
-   heroku login
-   ```
-
-6. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. Release your docker container to heroku
-
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
-
-10. set up your database
-
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
-
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
-
-12. profit
-
-### For M1 Mac users
-
-(Replaces **Step 8**)
-
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
-
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
-
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
-
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-
-3. Use docker to push the image to the Heroku container registry:
-
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+### User Profile Page
+![User Profile Page](https://user-images.githubusercontent.com/17211586/158198067-a96be25d-51e2-4e98-9a72-84815b059911.png)
