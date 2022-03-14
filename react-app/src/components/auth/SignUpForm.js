@@ -47,7 +47,9 @@ const SignUpForm = () => {
     setProfilePic(e.target.value)
   }
 
-  if (username && email && password && repeatPassword) {
+  if (username && email && password && repeatPassword && (password === repeatPassword) && profilePic) {
+    console.log('\n\n\n\n\n\n\n\n', password)
+    console.log('\n\n\n\n\n\n\n\n', repeatPassword)
     signUpButton = <button className='signup-button' type='submit'>Sign up</button>
   } else {
     signUpButton = <p className='signup-button-nothing'>Sign up</p>
@@ -87,7 +89,7 @@ const SignUpForm = () => {
           <div className='input'>
             <input
               placeholder='Email'
-              type='text'
+              type='email'
               name='email'
               onChange={updateEmail}
               value={email}
