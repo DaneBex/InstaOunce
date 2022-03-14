@@ -84,7 +84,7 @@ const LoginForm = () => {
                 <div className='input'>
                   <input
                     name='email'
-                    type='text'
+                    type='email'
                     placeholder='Email'
                     value={email}
                     onChange={updateEmail}
