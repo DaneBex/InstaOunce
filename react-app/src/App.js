@@ -28,10 +28,9 @@ function App() {
   if (!loaded) {
     return null;
   }
-  
+
   return (
     <BrowserRouter>
-    <NavBar />
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
@@ -40,18 +39,23 @@ function App() {
           <SignUpForm />
         </Route>
         <Route path="/posts/:postId" exact={true}>
+          <NavBar />
           <SinglePost />
         </Route>
         <ProtectedRoute path='/users' exact={true}>
+          <NavBar />
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
+          <NavBar />
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId/edit" exact={true}>
+          <NavBar />
           <UserEdit />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
+          <NavBar />
           <HomePage />
         </ProtectedRoute>
       </Switch>

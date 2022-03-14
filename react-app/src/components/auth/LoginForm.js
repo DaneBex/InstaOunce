@@ -64,63 +64,80 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='login-signup-main'>
-      <div className='login-signup-article'>
-        <div className='is-image-login'>
-          <img className='login-pic' src='https://www.instagram.com/static/images/homepage/home-phones.png/43cc71bb1b43.png' />
-          <img className='inside-pic' src={img_display} />
+    <>
+      <h3 className='ourlinks'>
+        Developed by:
+        <a href="https://github.com/brandonvicc">
+          Brandon Vicchiollo
+        </a>
+        <a href="https://github.com/171cas">
+          Cesar Solano
+        </a>
+        <a href="https://github.com/DaneBex">
+          Dane Becker
+        </a>
+        <a href="https://github.com/hamletv">
+          Hamlet Villa
+        </a>
+      </h3>
+      <div className='login-signup-main'>
+        <div className='login-signup-article'>
+          <div className='is-image-login'>
+            <img className='login-pic' src='https://www.instagram.com/static/images/homepage/home-phones.png/43cc71bb1b43.png' />
+            <img className='inside-pic' src={img_display} />
 
-        </div>
-        <div className='col'>
-          <div className='not-image-login'>
-            <form className='main-login-form' onSubmit={onLogin}>
-              <h1 className='logo-form'>InstaOunce</h1>
-              <div className='form'>
-                <div>
-                  {errors.map((error, ind) => (
-                    <div key={ind}>{error}</div>
-                  ))}
+          </div>
+          <div className='col'>
+            <div className='not-image-login'>
+              <form className='main-login-form' onSubmit={onLogin}>
+                <h1 className='logo-form'>InstaOunce</h1>
+                <div className='form'>
+                  <div>
+                    {errors.map((error, ind) => (
+                      <div key={ind}>{error}</div>
+                    ))}
+                  </div>
+                  <div className='input'>
+                    <input
+                      name='email'
+                      type='email'
+                      placeholder='Email'
+                      value={email}
+                      onChange={updateEmail}
+                    />
+                  </div>
+                  <div className='input'>
+                    <input
+                      name='password'
+                      type='password'
+                      placeholder='Password'
+                      value={password}
+                      onChange={updatePassword}
+                    />
+                  </div>
+                  {loginButton}
+                  <p>------------ OR ------------</p>
+                  <p onClick={demoUser} className='demo-user'>Demo User</p>
                 </div>
-                <div className='input'>
-                  <input
-                    name='email'
-                    type='email'
-                    placeholder='Email'
-                    value={email}
-                    onChange={updateEmail}
-                  />
-                </div>
-                <div className='input'>
-                  <input
-                    name='password'
-                    type='password'
-                    placeholder='Password'
-                    value={password}
-                    onChange={updatePassword}
-                  />
-                </div>
-                {loginButton}
-                <p>------------ OR ------------</p>
-                <p onClick={demoUser} className='demo-user'>Demo User</p>
+              </form>
+            </div>
+            <div className='main-signup-form'>
+              <p>Don't have an account? <NavLink to='/sign-up'>Sign Up</NavLink></p>
+            </div>
+
+            <div className='gta'>
+              <p>Get the app.</p>
+            </div>
+            <div className='get-app'>
+              <div>
+                <img src="as.svg" />
+                <img src="ps.svg" />
               </div>
-            </form>
-          </div>
-          <div className='main-signup-form'>
-            <p>Don't have an account? <NavLink to='/sign-up'>Sign Up</NavLink></p>
-          </div>
-
-          <div className='gta'>
-            <p>Get the app.</p>
-          </div>
-          <div className='get-app'>
-            <div>
-              <img src="as.svg" />
-              <img src="ps.svg" />
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
