@@ -52,11 +52,6 @@ const Post = ({ post }) => {
     }
   };
 
-  // useEffect(() => {
-  //     dispatch(populateComments())
-  //     dispatch(populatePosts())
-  // }, [])
-
   const closePostOptions = () => {
     if (postOptions) setPostOptions(false);
     else setPostOptions(true);
