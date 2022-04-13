@@ -27,7 +27,7 @@ function User() {
   let isFollowing = false
   let following;
 
-  console.log('UserId:',userId,'User_id:', user_id)
+  console.log('FROM USER PAGE: ', userPosts)
 
   const [viewFollowers, setViewFollowers] = useState(false)
   const [viewFollowing, setViewFollowing] = useState(false)
