@@ -22,23 +22,23 @@ const SinglePost = () => {
   const [comment, setComment] = useState('');
   const [commentOptions, setCommentOptions] = useState(false);
   const userId = useSelector(state => state.session.user?.id);
-  const userPostsObj = useSelector((state) => state.post);
-  const usersPosts = useSelector(state => state.post)
   const postObj = useSelector((state) => state.post[postId]);
+  // const userPostsObj = useSelector((state) => state.post);
+  // const usersPosts = useSelector(state => state.post)
 
-  if (postObj) console.log('INDIVIDUAL POST ', postObj?.user_id)
-  const userPosts = useSelector(state => state.post.posts)
-  const [viewPost, setViewPost] = useState(false)
+  // const userPosts = useSelector(state => state.post.posts)
+  // const [viewPost, setViewPost] = useState(false)
 
-  useEffect(() => {
-    dispatch(populatePosts());
-    dispatch(viewSinglePost(userId));
-  }, [dispatch]);
 
-  const closePost = () => {
-    if (viewPost) setViewPost(false);
-    else setViewPost(true);
-  };
+  // useEffect(() => {
+  //   dispatch(populatePosts());
+  //   dispatch(viewSinglePost(userId));
+  // }, [dispatch]);
+
+  // const closePost = () => {
+  //   if (viewPost) setViewPost(false);
+  //   else setViewPost(true);
+  // };
 
   //====================
 
@@ -57,21 +57,20 @@ const SinglePost = () => {
     }
   }
 
-  const removeComment = id => {
-    dispatch(deleteComment(id))
-    dispatch(populatePosts())
-  }
+  // const removeComment = id => {
+  //   dispatch(deleteComment(id))
+  //   dispatch(populatePosts())
+  // }
 
-  const closeCommentOptions = () => {
-    if (commentOptions) setCommentOptions(false)
-    else setCommentOptions(true)
-  }
+  // const closeCommentOptions = () => {
+  //   if (commentOptions) setCommentOptions(false)
+  //   else setCommentOptions(true)
+  // }
 
-  let viewCommentOptions = <CommentOptionModal post={postObj} />
+  // let viewCommentOptions = <CommentOptionModal post={postObj} />
 
   return (
-    <>
-      <div className='individual-post-sp'>
+    <div className='individual-post-sp'>
         <img className='individual-post-image-sp' src={postObj?.imageUrl} />
         <div className='post-description-individual'>
           <div className='header-post-individual'>
@@ -115,46 +114,8 @@ const SinglePost = () => {
             <button className='post-comment-button' onClick={makeCommentHandler}>Post</button>
           </div>
         </div>
-
-      </div>
-
-      {/* =============================================== */}
-
-      {/* <div className="user-profile-post-container">
-
-        <p id="user-profile-post-header">
-          <FontAwesomeIcon id="user-profile-post-icon" icon={faClipboard} />{" "}
-          Posts
-        </p>
-        <div className="user-profile-posts-container">
-          {userPosts?.map((post) => (
-            <div key={post.id} onClick={closePost} className="user-profile-post-card">
-              <div className="user-profile-post-info">
-                <p>
-                  <FontAwesomeIcon
-                    className="user-profile-post-info-content"
-                    icon={faHeart}
-                  />{" "}
-                  {post.likes}
-                </p>
-                <p>
-                  <FontAwesomeIcon
-                    className="user-profile-post-info-content"
-                    icon={faComment}
-                  />{" "}
-                  {post.comments?.length}
-                </p>
-              </div>
-              <img className="user-profile-post-img" src={post.imageUrl} />
-              {viewPost && <ViewPostModal post={post} />}
-            </div>
-          ))}
-        </div>
-
-      </div> */}
-    </>
+    </div>
   )
-
 }
 
 export default SinglePost;

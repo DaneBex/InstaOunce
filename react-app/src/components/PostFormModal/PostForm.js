@@ -36,11 +36,10 @@ function PostForm({ setShowModal }) {
         });
         if (res.ok) {
             s3Url = await res.json();
-            console.log('IMAGE URL AVAILABLE!')
             // setImageLoading(false);
             setShowModal(false);
             console.log('PAST IMAGE LOADING.')
-            history.push(`/`);
+            // history.push(`/`);
         }
         else {
             setShowModal(false)

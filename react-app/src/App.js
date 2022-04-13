@@ -13,6 +13,7 @@ import ReactDOM from "react-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import UserEdit from "./components/UserEdit/UserEdit";
 import SinglePost from "./components/SinglePost";
+import { populatePosts } from "./store/post";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -21,6 +22,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      await dispatch(populatePosts()); //
       setLoaded(true);
     })();
   }, [dispatch]);
