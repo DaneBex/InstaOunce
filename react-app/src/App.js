@@ -9,8 +9,6 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/UserProfile/User";
 import { authenticate } from "./store/session";
-import ReactDOM from "react-dom";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import UserEdit from "./components/UserEdit/UserEdit";
 import SinglePost from "./components/SinglePost";
 import { populatePosts } from "./store/post";
