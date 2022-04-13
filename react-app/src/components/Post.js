@@ -1,44 +1,23 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { makeComment, populateComments } from "../store/comment";
+import { makeComment } from "../store/comment";
 import { populatePosts } from "../store/post";
-import { useState, useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { faEllipsis, faBan } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as fatHeart } from "@fortawesome/free-solid-svg-icons";
-import {
-  faHeart,
-  faComment,
-  faPaperPlane,
-  faFaceSmile,
-} from "@fortawesome/free-regular-svg-icons";
-import ViewPost from "./ViewPostModal/ViewPost";
+import { faHeart, faComment, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import ViewPostModal from "./ViewPostModal";
-import { deleteComment } from "../store/comment";
 import PostOptionModal from "./PostOptionsModal";
-import CommentOptionModal from "./CommentOptionModal";
 import Comment from "./Comment";
 
 const Post = ({ post }) => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
   const user_id = useSelector((state) => state.session.user?.id);
-  const postsObj = useSelector((state) => state.post);
-  const posts = Object.values(postsObj);
-  const commentsObj = useSelector((state) => state.comment);
-  const comments = Object.values(commentsObj);
-
   const [viewPost, setViewPost] = useState(false);
   const [postOptions, setPostOptions] = useState(false);
-  const [commentOptions, setCommentOptions] = useState(false);
-
-  const removeComment = (id) => {
-    dispatch(deleteComment(id));
-    dispatch(populatePosts());
-  };
-
   const makeCommentHandler = () => {
     if (comment) {
       let vals = {
@@ -57,15 +36,8 @@ const Post = ({ post }) => {
     else setPostOptions(true);
   };
 
-  const closeCommentOptions = () => {
-    if (commentOptions) setCommentOptions(false);
-    else setCommentOptions(true);
-  };
-
   let viewPostNow = <ViewPostModal post={post} />;
   let viewPostOptions = <PostOptionModal post={post} />;
-  let viewCommentOptions = <CommentOptionModal post={post} />;
-
   const closePost = () => {
     if (viewPost) setViewPost(false);
     else setViewPost(true);
@@ -82,7 +54,6 @@ const Post = ({ post }) => {
     //need a hard refresh
     populatePosts();
     window.location.reload(false);
-    // history.push("/");
   };
 
   return (
@@ -91,7 +62,7 @@ const Post = ({ post }) => {
         <div className="header-post">
           <div className="image-prof-details">
             <NavLink to={`/users/${post.user_id}`}>
-              <img className="prof-pic-post" src={post.user_prof_pic} />
+              <img className="prof-pic-post" src={post.user_prof_pic} alt={post.user_prof_username}/>
             </NavLink>
             <NavLink
               to={`/users/${post.user_id}`}
@@ -107,7 +78,7 @@ const Post = ({ post }) => {
           />
           {postOptions && viewPostOptions}
         </div>
-        <img className="postbox-image" src={post.imageUrl} />
+        <img className="postbox-image" src={post.imageUrl} alt={post.user_prof_username}/>
         <div className="post-icons">
           <div className="heart-div" onClick={handleLike}>
             <FontAwesomeIcon

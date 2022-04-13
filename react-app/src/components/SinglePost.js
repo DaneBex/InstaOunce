@@ -1,27 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink } from "react-router-dom";
-import * as postActions from "../store/post"
 import { makeComment } from "../store/comment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faComment, faClipboard, faPaperPlane, faFaceSmile } from '@fortawesome/free-regular-svg-icons'
-import { deleteComment } from "../store/comment";
-import { populatePosts } from "../store/post";
-import CommentOptionModal from "./CommentOptionModal";
 import LargeCommentOption from "./Comment-Large";
-import ViewPostModal from "./ViewPostModal";
-import { viewSinglePost } from "../store/post";
 import './SinglePost.css'
-import User from "./UserProfile/User";
 
 
 const SinglePost = () => {
-
   const dispatch = useDispatch();
   const { postId } = useParams();
   const [comment, setComment] = useState('');
-  const [commentOptions, setCommentOptions] = useState(false);
   const userId = useSelector(state => state.session.user?.id);
   const postObj = useSelector((state) => state.post[postId]);
   const userPostsObj = useSelector((state) => state.post);
@@ -38,7 +29,6 @@ const SinglePost = () => {
         comment
       }
       dispatch(makeComment(vals))
-      dispatch(populatePosts())
       setComment('')
     }
   }
