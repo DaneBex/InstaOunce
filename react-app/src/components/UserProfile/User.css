@@ -100,6 +100,7 @@
   align-items: center;
   justify-content: center;
   gap: 21px;
+  padding-bottom: 40px;
 }
 
 .user-profile-post-card {
