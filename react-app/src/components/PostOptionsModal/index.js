@@ -11,7 +11,7 @@ function PostOptionModal({post}) {
     <>
       {showModal && (
         <Modal x={'x-out'} id={'modal-content-three'} onClose={() => setShowModal(false)}>
-          <PostOption post={post} />
+          <PostOption post={post} setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
