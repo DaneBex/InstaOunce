@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink } from "react-router-dom";
 import { makeComment } from "../store/comment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
+// import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faComment, faClipboard, faPaperPlane, faFaceSmile } from '@fortawesome/free-regular-svg-icons'
 import LargeCommentOption from "./Comment-Large";
 import './SinglePost.css'
@@ -36,11 +36,11 @@ const SinglePost = () => {
   return (
     <>
       <div className='individual-post-sp'>
-        <img className='individual-post-image-sp' src={postObj?.imageUrl} />
+        <img className='individual-post-image-sp' src={postObj?.imageUrl} alt={postObj?.imageUrl} />
         <div className='post-description-individual'>
           <div className='header-post-individual'>
             <div className='image-prof-details-individual'>
-              <img className='prof-pic-post' src={postObj?.user_prof_pic} />
+              <img className='prof-pic-post' src={postObj?.user_prof_pic} alt={postObj?.user_prof_username}/>
               <h2>{postObj?.user_prof_username}</h2>
             </div>
             {/* <FontAwesomeIcon className='three-dots' icon={faEllipsis} /> */}
@@ -48,7 +48,7 @@ const SinglePost = () => {
           <ul className="comment-list">
             <li >
               <div className="individual-li">
-                <img className='prof-pic-post' src={postObj?.user_prof_pic} />
+                <img className='prof-pic-post' src={postObj?.user_prof_pic} alt={postObj?.user_prof_username} />
                 <p className='postbox-caption-username-individual'>{postObj?.user_prof_username}</p>
                 <p>{postObj?.caption}</p>
               </div>
@@ -109,7 +109,7 @@ const SinglePost = () => {
                   </p>
                 </div>
               </NavLink>
-              <img className="user-profile-post-img" src={post.imageUrl} />
+              <img className="user-profile-post-img" src={post.imageUrl} alt={post.imageUrl}/>
             </div>
           ))}
         </div>
