@@ -12,7 +12,7 @@ function PostForm({ setShowModal }) {
   const [caption, setCaption] = useState("");
   const [imageUrl, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
-  // const [imageLoading, setImageLoading] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false); //
 
   useEffect(() => {
     const validationErrors = [];
@@ -26,24 +26,24 @@ function PostForm({ setShowModal }) {
     const formData = new FormData();
     formData.append("caption", caption);
     formData.append("image", imageUrl);
-    console.log(formData.get('caption'))
+    // console.log(formData.get('caption'))
 
-        // setImageLoading(true);
-        setShowModal(true)
+        setImageLoading(true); //
+        // setShowModal(true)
         const res = await fetch('/api/posts/upload', {
             method: "POST",
             body: formData
         });
         if (res.ok) {
             s3Url = await res.json();
-            // setImageLoading(false);
+            setImageLoading(false); //
             setShowModal(false);
             console.log('PAST IMAGE LOADING.')
-            // history.push(`/`);
+            history.push(`/`);
         }
         else {
             setShowModal(false)
-            // setImageLoading(false);
+            setImageLoading(false); //
             console.log("error");
         }
   };
@@ -89,6 +89,7 @@ function PostForm({ setShowModal }) {
       onSubmit={handleSubmit}>
         Post
       </button>
+      {(imageLoading) && <p>Loading...</p>}
     </form>
   );
 }

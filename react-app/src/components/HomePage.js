@@ -16,10 +16,10 @@ const HomePage = () => {
   const user_id = useSelector((state) => state.session.user?.id);
   const [comment, setComment] = useState("");
 
-  useEffect(() => {
-    dispatch(populateComments());
-    dispatch(populatePosts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(populateComments());
+  //   dispatch(populatePosts());
+  // }, [dispatch]);
 
   const makeComment = (post_id) => {
     //e.preventDefault()

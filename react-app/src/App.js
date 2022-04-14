@@ -12,6 +12,7 @@ import { authenticate } from "./store/session";
 import UserEdit from "./components/UserEdit/UserEdit";
 import SinglePost from "./components/SinglePost";
 import { populatePosts } from "./store/post";
+import { populateComments } from "./store/comment";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -21,6 +22,7 @@ function App() {
     (async () => {
       await dispatch(authenticate());
       await dispatch(populatePosts()); //
+      await dispatch(populateComments()); //
       setLoaded(true);
     })();
   }, [dispatch]);
