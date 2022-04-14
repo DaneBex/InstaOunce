@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import * as postActions from "../../store/post";
 import { useDispatch, useSelector } from "react-redux";
 import "./PostForm.css";
-import { createPost } from "../../store/post";
+import { addPost } from "../../store/post";
 
 function PostForm({ setShowModal }) {
   const dispatch = useDispatch();
@@ -26,7 +26,6 @@ function PostForm({ setShowModal }) {
     const formData = new FormData();
     formData.append("caption", caption);
     formData.append("image", imageUrl);
-    // console.log(formData.get('caption'))
 
         setImageLoading(true); //
         // setShowModal(true)
@@ -36,9 +35,9 @@ function PostForm({ setShowModal }) {
         });
         if (res.ok) {
             s3Url = await res.json();
+            dispatch(addPost(s3Url));
             setImageLoading(false); //
             setShowModal(false);
-            console.log('PAST IMAGE LOADING.')
             history.push(`/`);
         }
         else {

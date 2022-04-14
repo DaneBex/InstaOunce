@@ -4,7 +4,6 @@ import { Redirect } from "react-router-dom";
 import { populatePosts } from "../store/post";
 import Post from "./Post";
 import "./HomePage.css";
-import { populateComments } from "../store/comment";
 import NavBar from "./NavBar";
 
 const HomePage = () => {
@@ -15,12 +14,6 @@ const HomePage = () => {
   const posts = postsList.reverse();
   const user_id = useSelector((state) => state.session.user?.id);
   const [comment, setComment] = useState("");
-
-  // useEffect(() => {
-  //   dispatch(populateComments());
-  //   dispatch(populatePosts());
-  // }, [dispatch]);
-
   const makeComment = (post_id) => {
     //e.preventDefault()
 
