@@ -19,14 +19,15 @@ import { deleteComment } from "../store/comment";
 import PostOptionModal from "./PostOptionsModal";
 import CommentOptionModal from "./CommentOptionModal";
 import Comment from "./Comment";
+import { addRemoveLike } from "../store/post";
 
 const Post = ({ post }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
   const user_id = useSelector((state) => state.session.user?.id);
-  const postsObj = useSelector((state) => state.post);
-  const posts = Object.values(postsObj);
+  const postsObj = useSelector((state) => Object.values(state.post));
+  // const posts = Object.values(postsObj);
   const commentsObj = useSelector((state) => state.comment);
   const comments = Object.values(commentsObj);
 
@@ -77,16 +78,17 @@ const Post = ({ post }) => {
   };
 
   const handleLike = async () => {
-    const response = await fetch(`/api/likes/${user_id}/posts/${post.id}`, {
-      method: "POST",
-      body: { post, user_id },
-    });
-    const res = await response.json();
-    console.log(res);
+    // const response = await fetch(`/api/likes/${user_id}/posts/${post.id}`, {
+    //   method: "POST",
+    //   body: { post, user_id },
+    // });
+    dispatch(addRemoveLike(user_id, post.id))
+    // const res = await response.json();
+    // console.log(res);
 
     //need a hard refresh
-    populatePosts();
-    window.location.reload(false);
+    dispatch(populatePosts());
+    // window.location.reload(false);
     // history.push("/");
   };
 

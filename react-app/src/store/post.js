@@ -119,6 +119,16 @@ export const getSinglePost = (id) => async (dispatch) => {
   }
 }
 
+export const addRemoveLike = (userId, postId) => async (dispatch) => {
+  const response = await fetch(`/api/likes/${userId}/posts/${postId}`, {
+    method: "POST"
+  });
+  if (response.ok) {
+    const post = await response.json();
+    dispatch(addPost(post))
+  }
+}
+
 const initialState = {};
 
 const postReducer = (state = initialState, action) => {
