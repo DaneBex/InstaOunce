@@ -51,15 +51,15 @@ const Post = ({ post }) => {
   };
 
   const handleLike = async () => {
-    // const response = await fetch(`/api/likes/${user_id}/posts/${post.id}`, {
-    //   method: "POST",
-    //   body: { post, user_id },
-    // });
-    dispatch(addRemoveLike(user_id, post.id))
-    // const res = await response.json();
+    const response = await fetch(`/api/likes/${user_id}/posts/${post.id}`, {
+      method: "POST",
+      body: { post, user_id },
+    });
+    // dispatch(addRemoveLike(user_id, post.id))
+    const res = await response.json();
     // console.log(res);
 
-   
+
 
     dispatch(populatePosts());
     // window.location.reload(false);
