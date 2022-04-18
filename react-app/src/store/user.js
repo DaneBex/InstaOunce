@@ -35,7 +35,6 @@ export const editUser = (id, formInfo) => async dispatch => {
 
 
 export const populateUsers = () => async dispatch => {
-    console.log('happening')
     const response = await csrfFetch('/api/users/')
 
     if (response.ok) {

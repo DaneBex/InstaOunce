@@ -36,7 +36,7 @@ def upload_image():
     new_post = Post(user=current_user, imageUrl=url, caption=caption)
     db.session.add(new_post)
     db.session.commit()
-    return {'url': url}
+    return new_post.to_dict()
 
 
 @post_routes.route('/<int:id>')

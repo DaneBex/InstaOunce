@@ -10,21 +10,15 @@ import EditPostModal from "../EditPostModal";
 import { followUser, populateUsers } from "../../store/user";
 
 
-const PostOption = ({ post }) => {
+const PostOption = ({ post, setShowModal }) => {
     const dispatch = useDispatch()
     const user_id = useSelector((state) => state.session.user?.id);
     const usersObj = useSelector(state => state.user)
     const users = Object.values(usersObj)
     const user = users.find(user => post.user_id === user.id)
     let isFollowing = false
-
-    const [viewPost, setViewPost] = useState(false)
-    const [viewEditPost, setViewEditPost] = useState(false)
-
-    useEffect(() => {
-        dispatch(populateUsers())
-    }, [])
-
+    const [viewPost, setViewPost] = useState(false);
+    const [viewEditPost, setViewEditPost] = useState(false);
     const closePost = () => {
         if (viewPost) setViewPost(false);
         else setViewPost(true);
@@ -36,10 +30,8 @@ const PostOption = ({ post }) => {
     }
 
     const removePost = id => {
-        console.log(id)
         dispatch(deletePost(id))
-        dispatch(populatePosts())
-        window.location.reload(false);
+        setShowModal(false);
     }
 
     const makeFollow = () => {
@@ -50,8 +42,6 @@ const PostOption = ({ post }) => {
 
     let viewPostModal = <PostFormModal />
     let editPost = <EditPostModal post={post} />
-
-    console.log(users)
 
     if (user) {
     if (user.followers) {

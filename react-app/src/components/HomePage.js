@@ -3,19 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { populatePosts } from "../store/post";
 import Post from "./Post";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as fatHeart } from "@fortawesome/free-solid-svg-icons";
-import {
-  faHeart,
-  faComment,
-  faPaperPlane,
-  faFaceSmile,
-} from "@fortawesome/free-regular-svg-icons";
 import "./HomePage.css";
-import { populateLikes } from "../store/like";
-import { populateComments } from "../store/comment";
-import ViewPost from "./ViewPostModal/ViewPost";
 import NavBar from "./NavBar";
 
 const HomePage = () => {
@@ -24,20 +12,8 @@ const HomePage = () => {
   const postsObj = useSelector((state) => state.post);
   const postsList = Object.values(postsObj);
   const posts = postsList.reverse();
-  const commentsObj = useSelector((state) => state.comment);
-  const comments = Object.values(commentsObj);
   const user_id = useSelector((state) => state.session.user?.id);
-
   const [comment, setComment] = useState("");
-  const [viewPost, setViewPost] = useState(false);
-  const [like, setLike] = useState(false);
-  const [viewCommentClicked, setViewCommentClicked] = useState(false);
-
-  useEffect(() => {
-    dispatch(populateComments());
-    dispatch(populatePosts());
-  }, [dispatch]);
-
   const makeComment = (post_id) => {
     //e.preventDefault()
 
@@ -50,10 +26,6 @@ const HomePage = () => {
       dispatch(makeComment(vals));
       setComment("");
     }
-  };
-
-  const openPost = () => {
-    setViewPost(true);
   };
 
   if (!sessionUser) return <Redirect to="/login" />;

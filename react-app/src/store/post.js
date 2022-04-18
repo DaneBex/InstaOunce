@@ -13,7 +13,7 @@ const getUserPosts = (posts) => {
   };
 };
 
-const addPost = (post) => {
+export const addPost = (post) => {
   return {
     type: ADD_POST,
     post,
@@ -139,7 +139,6 @@ const postReducer = (state = initialState, action) => {
       action.payload.posts.forEach((post) => {
         newState[post.id] = post;
       });
-      // console.log('this is the newState', newState);
       return newState;
     case ADD_POST:
       newState = { ...state, [action.post.id]: { ...action.post } };

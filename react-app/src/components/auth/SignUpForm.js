@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import * as sessionActions from "../../store/session"
-
-import './SignUpForm.css'
+import './SignUpForm.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -124,7 +123,7 @@ const SignUpForm = () => {
               name='profile_pic'
               onChange={updateProfilePic}
               value={profilePic}
-              required={true}
+              // required={true}
             ></input>
           </div>
           {signUpButton}
@@ -138,8 +137,8 @@ const SignUpForm = () => {
       </div>
       <div className='get-app'>
         <div>
-          <img src="as.svg" />
-          <img src="ps.svg" />
+          <img src='./as.svg' />
+          <img src="./ps.svg" />
         </div>
       </div>
     </div>

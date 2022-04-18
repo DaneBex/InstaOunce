@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClipboard,
@@ -17,22 +17,18 @@ import ViewFollowingModal from "../ViewFollowingModal";
 
 function User() {
   const dispatch = useDispatch();
-  const userPosts = useSelector((state) => state.post.posts);
+  const posts = useSelector((state) => state.post);
+  const postsArr = Object.values(posts);
   const usersObj = useSelector(state => state.user)
   const users = Object.values(usersObj)
   const user_id = useSelector(state => state.session.user?.id)
-  const mainUser = useSelector(state => state.session.user)
   const [user, setUser] = useState({});
   const { userId } = useParams();
+  const userPosts = postsArr.filter(post => post.user_id === +userId)
   let isFollowing = false
   let following;
-
-  console.log('UserId:',userId,'User_id:', user_id)
-
   const [viewFollowers, setViewFollowers] = useState(false)
   const [viewFollowing, setViewFollowing] = useState(false)
-
-  console.log(users)
 
   if (users) {
     let num = 0
@@ -51,14 +47,6 @@ function User() {
   }, [])
 
   const [viewPost, setViewPost] = useState(false)
-  // const [isFollowing, setIsFollowing] = useState(false)
-
-  useEffect(() => {
-    dispatch(postActions.userPosts(userId));
-  }, [dispatch]);
-
-  console.log(user)
-  console.log(user_id)
 
   useEffect(() => {
     if (!userId) {
@@ -86,7 +74,6 @@ function User() {
   }
 
   const makeFollow = () => {
-    console.log('yes')
     dispatch(followUser(user_id, userId))
     dispatch(populateUsers())
     window.location.reload(false);
@@ -104,9 +91,6 @@ if (user.followers) {
 
 let viewFollowersmodal = <ViewFollowModal user={user} />
 let viewFollowingmodal = <ViewFollowingModal user={user} />
-
-
-
 
   return (
     <div className="user-profile-container">
@@ -152,7 +136,7 @@ let viewFollowingmodal = <ViewFollowingModal user={user} />
         <div className="user-profile-posts-container">
           {userPosts?.map((post) => (
             <div key={post.id} className="user-profile-post-card">
-              <NavLink to={`/posts/${post.id}`}>
+              <Link to={`/posts/${post.id}`}>
                 <div className="user-profile-post-info">
                   <p>
                     <FontAwesomeIcon
@@ -169,7 +153,7 @@ let viewFollowingmodal = <ViewFollowingModal user={user} />
                     {post.comments?.length}
                   </p>
               </div>
-              </NavLink>
+              </Link>
               <img className="user-profile-post-img" src={post.imageUrl} />
               {/* {viewPost && <ViewPostModal user_post_id={userId} post={post} />} */}
             </div>

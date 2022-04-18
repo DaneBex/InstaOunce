@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import * as postActions from "../../store/post";
 import { useDispatch, useSelector } from "react-redux";
 import "./PostForm.css";
-import { createPost } from "../../store/post";
+import { addPost } from "../../store/post";
 
-function PostForm() {
+function PostForm({ setShowModal }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [caption, setCaption] = useState("");
   const [imageUrl, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
-  const [imageLoading, setImageLoading] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false); //
+
+  useEffect(() => {
+    const validationErrors = [];
+    setErrors(validationErrors);
+  }, [imageUrl, caption])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,20 +26,23 @@ function PostForm() {
     const formData = new FormData();
     formData.append("caption", caption);
     formData.append("image", imageUrl);
-    console.log(formData.get('caption'))
 
-        setImageLoading(true);
+        setImageLoading(true); //
+        // setShowModal(true)
         const res = await fetch('/api/posts/upload', {
             method: "POST",
             body: formData
         });
         if (res.ok) {
             s3Url = await res.json();
-            setImageLoading(false);
+            dispatch(addPost(s3Url));
+            setImageLoading(false); //
+            setShowModal(false);
             history.push(`/`);
         }
         else {
-            setImageLoading(false);
+            setShowModal(false)
+            setImageLoading(false); //
             console.log("error");
         }
   };
@@ -76,9 +84,11 @@ function PostForm() {
         ></textarea>
       </div>
 
-      <button className="post-form-btn" type="submit">
+      <button className="post-form-btn" type="submit"
+      onSubmit={handleSubmit}>
         Post
       </button>
+      {(imageLoading) && <p>Loading...</p>}
     </form>
   );
 }
