@@ -130,8 +130,8 @@ const LoginForm = () => {
             </div>
             <div className='get-app'>
               <div>
-                <img src="as.svg" />
-                <img src="ps.svg" />
+                <img src="http://instaounce.s3.amazonaws.com/f564bae5c8d34b5483abbc94d751d109.png" />
+                <img src="http://instaounce.s3.amazonaws.com/f235cd9bc0384f34835010d27b169018.png" />
               </div>
             </div>
           </div>
